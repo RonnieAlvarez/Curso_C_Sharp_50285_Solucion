@@ -91,6 +91,7 @@
             // 
             txtNombre.Location = new Point(215, 127);
             txtNombre.Name = "txtNombre";
+            txtNombre.PlaceholderText = "Nombre";
             txtNombre.Size = new Size(144, 23);
             txtNombre.TabIndex = 1;
             txtNombre.KeyDown += txtNombre_KeyDown;
@@ -99,6 +100,7 @@
             // 
             txtApellido.Location = new Point(215, 159);
             txtApellido.Name = "txtApellido";
+            txtApellido.PlaceholderText = "Apellido";
             txtApellido.Size = new Size(144, 23);
             txtApellido.TabIndex = 2;
             txtApellido.KeyDown += txtApellido_KeyDown;
@@ -107,6 +109,7 @@
             // 
             txtDni.Location = new Point(215, 191);
             txtDni.Name = "txtDni";
+            txtDni.PlaceholderText = "Cedula (10 chrs)";
             txtDni.Size = new Size(144, 23);
             txtDni.TabIndex = 3;
             txtDni.KeyDown += txtDni_KeyDown;
@@ -115,6 +118,7 @@
             // 
             txtEdad.Location = new Point(215, 223);
             txtEdad.Name = "txtEdad";
+            txtEdad.PlaceholderText = "Edad";
             txtEdad.Size = new Size(144, 23);
             txtEdad.TabIndex = 4;
             txtEdad.KeyDown += txtEdad_KeyDown;
