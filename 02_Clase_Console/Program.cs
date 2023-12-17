@@ -1,6 +1,6 @@
 ﻿using System;
 
-string comision;
+string comision,inputComision;
 byte nota;
 
 Console.WriteLine("Universidad");
@@ -10,11 +10,13 @@ Console.WriteLine("");
 Console.WriteLine("Ingresar los datos del alumno");
 Console.WriteLine("-------------------------------");
 Console.Write("Digite la comisión (A,B,C): ");
-string inputComision = Console.ReadLine();
+string? input = Console.ReadLine();
+inputComision = input ?? string.Empty;
 while (string.IsNullOrEmpty(inputComision))
 {
     Console.WriteLine("Por favor, ingrese un valor válido.");
-    inputComision = Console.ReadLine();
+    input = Console.ReadLine();
+    inputComision = input ?? string.Empty;
 }
 switch (inputComision)
     {
@@ -31,6 +33,7 @@ switch (inputComision)
         comision = "No tiene Turno Asignado";
         break;
 }
+Console.WriteLine(comision);
 Console.WriteLine("-------------------------------");
 while (true)
 {
