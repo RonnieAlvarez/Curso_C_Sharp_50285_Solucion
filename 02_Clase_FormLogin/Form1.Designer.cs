@@ -71,7 +71,8 @@
             // lblMessage
             // 
             lblMessage.Dock = DockStyle.Bottom;
-            lblMessage.ForeColor = SystemColors.ActiveCaptionText;
+            lblMessage.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblMessage.ForeColor = SystemColors.ButtonHighlight;
             lblMessage.Location = new Point(3, 367);
             lblMessage.Name = "lblMessage";
             lblMessage.Size = new Size(294, 30);

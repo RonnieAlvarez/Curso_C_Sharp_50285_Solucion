@@ -1,7 +1,7 @@
 ﻿
 
 Console.WriteLine("Digite el Nombre:");
-string txtNombre=Console.ReadLine();
+string txtNombre = Console.ReadLine();
 
 Console.WriteLine("Digite el Apellido:");
 string txtApellido = Console.ReadLine();

@@ -1,8 +1,11 @@
+using System.ComponentModel;
+
 namespace _02_Clase_FormLogin
 {
     public partial class Form1 : Form
     {
         object[,] objUser = new object[3, 3];
+        byte cuentaErrores = 0;
         public Form1()
         {
             InitializeComponent();
@@ -34,14 +37,23 @@ namespace _02_Clase_FormLogin
                         lblProfile.Text = objUser[i, 2].ToString();
                         lblMessage.Text = "Success";
                         lblMessage.BackColor = Color.Teal;
-                        break;
                     }
                     else
                     {
-                        lblMessage.Text = "Fail";
+                        if (cuentaErrores == 0) lblMessage.Text = "Fail ";
+                        else lblMessage.Text = "Fail "+ cuentaErrores.ToString();
                         lblMessage.BackColor = Color.Red;
-                        break;
+                        cuentaErrores++;
+                        if (cuentaErrores >= 5)
+                        {
+                            btnLogin.Enabled = false;
+                            txtName.Enabled = false;
+                            txtPassword.Enabled = false;
+                            lblMessage.Text = "To many fails";
+                            lblMessage.BackColor = Color.Red;
+                        }
                     }
+                        break;
                 }
                 else
                 {
@@ -52,7 +64,8 @@ namespace _02_Clase_FormLogin
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            if (txtPassword.TextLength >= 8) {
+            if (txtPassword.TextLength >= 8 && cuentaErrores<5)
+            {
                 btnLogin.Enabled = true;
             }
         }
