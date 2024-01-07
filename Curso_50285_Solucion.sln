@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_Clase_Console", "02_Clas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03_ArticulosLimpiezaTienda", "TiendaArticulosLimpieza\03_ArticulosLimpiezaTienda.csproj", "{50736F77-5496-40FF-9EE8-ADBAAD5C3138}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_Ejer1After", "ejer1After\03_Ejer1After.csproj", "{F7849AF3-9CF4-4396-A43C-30B0BF957659}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_Ejer1After_1", "ejer1After\03_Ejer1After_1.csproj", "{F7849AF3-9CF4-4396-A43C-30B0BF957659}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
