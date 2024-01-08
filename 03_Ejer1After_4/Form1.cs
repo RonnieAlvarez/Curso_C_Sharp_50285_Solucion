@@ -8,37 +8,36 @@ namespace _03_Ejer1After_4
         {
             InitializeComponent();
         }
-
-        private void btnCalcPago_Click(object sender, EventArgs e)
+        private void btnCalcPago_Click(object sender, EventArgs e) { MostrarDatosDeRecibo(); }
+        private void btnCerrar_Click(object sender, EventArgs e)    {LimpiarDatosIngresados();}
+        decimal CalcularImporteBruto()  { return numCantHoras.Value * numValorHora.Value; }
+        decimal CalcularAntiguedad()    { return numAntiguedad.Value * 30;}
+        decimal CalcularSubTotal()      { return CalcularImporteBruto()+CalcularAntiguedad();}
+        decimal CalcularDescuento()     { return CalcularSubTotal() * 13 / 100;}
+        decimal CalcularTotalNeto()     { return CalcularSubTotal() - CalcularDescuento(); }
+        private void MostrarDatosDeRecibo()
         {
-            decimal importeBruto = CalcularImporteBruto();
-            decimal antiguedad =  numAntiguedad.Value * 30;
-            decimal subTotal = (importeBruto + antiguedad);
-            decimal descuento = subTotal * 13 / 100;
-            decimal totalNeto = subTotal - descuento;
-
-            this.lblTotalBruto.Text += importeBruto.ToString();
-            this.lblPagoAntiguedad.Text += antiguedad.ToString();
-            this.lblDescuento.Text += descuento.ToString();
-            this.lblTotalNeto.Text += totalNeto.ToString();
-
+            this.lblTotalBruto.Text += CalcularImporteBruto().ToString();
+            this.lblPagoAntiguedad.Text += CalcularAntiguedad().ToString();
+            this.lblDescuento.Text += CalcularDescuento().ToString();
+            this.lblTotalNeto.Text += CalcularTotalNeto().ToString();
             grpRecibo.Visible = true;
         }
-
-        decimal CalcularImporteBruto() {
-            decimal importeBruto = Convert.ToDecimal(this.numCantHoras.Value) * Convert.ToDecimal(this.numValorHora.Value);
-            return importeBruto;
+        private void LimpiarDatosIngresados() {
+            grpRecibo.Visible = false;
+            txtName.Text = string.Empty;
+            numAntiguedad.Value = 0;
+            numValorHora.Value = 0;
+            numCantHoras.Value = 0;
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            grpRecibo.Visible = false;
-            txtName.Text=string.Empty;
-            numAntiguedad.Value=0;
-            numValorHora.Value=0;
-            numCantHoras.Value = 0;
-    }
-
-             
+            if (e.KeyCode == Keys.Return)
+            {
+                e.SuppressKeyPress = true; // Suprime el sonido del bip
+                SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
     }
 }

@@ -88,10 +88,11 @@
             // 
             // btnCalcPago
             // 
+            btnCalcPago.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnCalcPago.Location = new Point(59, 256);
             btnCalcPago.Name = "btnCalcPago";
-            btnCalcPago.Size = new Size(75, 23);
-            btnCalcPago.TabIndex = 1;
+            btnCalcPago.Size = new Size(220, 45);
+            btnCalcPago.TabIndex = 5;
             btnCalcPago.Text = "Calcular Pago";
             btnCalcPago.UseVisualStyleBackColor = true;
             btnCalcPago.Click += btnCalcPago_Click;
@@ -101,14 +102,16 @@
             txtName.Location = new Point(155, 121);
             txtName.Name = "txtName";
             txtName.Size = new Size(121, 23);
-            txtName.TabIndex = 2;
+            txtName.TabIndex = 1;
+            txtName.KeyDown += TextBox_KeyDown;
             // 
             // numValorHora
             // 
             numValorHora.Location = new Point(155, 173);
             numValorHora.Name = "numValorHora";
             numValorHora.Size = new Size(120, 23);
-            numValorHora.TabIndex = 4;
+            numValorHora.TabIndex = 3;
+            numValorHora.KeyDown += TextBox_KeyDown;
             // 
             // numCantHoras
             // 
@@ -116,6 +119,7 @@
             numCantHoras.Name = "numCantHoras";
             numCantHoras.Size = new Size(120, 23);
             numCantHoras.TabIndex = 4;
+            numCantHoras.KeyDown += TextBox_KeyDown;
             // 
             // grpRecibo
             // 
@@ -137,51 +141,54 @@
             lblTotalNeto.AutoSize = true;
             lblTotalNeto.Location = new Point(88, 214);
             lblTotalNeto.Name = "lblTotalNeto";
-            lblTotalNeto.Size = new Size(67, 15);
+            lblTotalNeto.Size = new Size(73, 15);
             lblTotalNeto.TabIndex = 4;
-            lblTotalNeto.Text = "Total Neto: ";
+            lblTotalNeto.Text = "Total Neto:   ";
             // 
             // lblDescuento
             // 
             lblDescuento.AutoSize = true;
             lblDescuento.Location = new Point(91, 182);
             lblDescuento.Name = "lblDescuento";
-            lblDescuento.Size = new Size(71, 15);
+            lblDescuento.Size = new Size(77, 15);
             lblDescuento.TabIndex = 4;
-            lblDescuento.Text = "Descuentos:";
+            lblDescuento.Text = "Descuentos:  ";
             // 
             // lblPagoAntiguedad
             // 
             lblPagoAntiguedad.AutoSize = true;
             lblPagoAntiguedad.Location = new Point(88, 139);
             lblPagoAntiguedad.Name = "lblPagoAntiguedad";
-            lblPagoAntiguedad.Size = new Size(209, 15);
+            lblPagoAntiguedad.Size = new Size(215, 15);
             lblPagoAntiguedad.TabIndex = 4;
-            lblPagoAntiguedad.Text = "Pago por Antiguedad (CantAños*$30):";
+            lblPagoAntiguedad.Text = "Pago por Antiguedad (CantAños*$30):  ";
             // 
             // lblTotalBruto
             // 
             lblTotalBruto.AutoSize = true;
             lblTotalBruto.Location = new Point(88, 87);
             lblTotalBruto.Name = "lblTotalBruto";
-            lblTotalBruto.Size = new Size(191, 15);
+            lblTotalBruto.Size = new Size(197, 15);
             lblTotalBruto.TabIndex = 4;
-            lblTotalBruto.Text = "Total Bruto (CantHoras*ValorHora):";
+            lblTotalBruto.Text = "Total Bruto (CantHoras*ValorHora):  ";
             // 
             // lblTituloRecibo
             // 
             lblTituloRecibo.AutoSize = true;
+            lblTituloRecibo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblTituloRecibo.Location = new Point(149, 19);
             lblTituloRecibo.Name = "lblTituloRecibo";
-            lblTituloRecibo.Size = new Size(200, 15);
+            lblTituloRecibo.Size = new Size(290, 21);
             lblTituloRecibo.TabIndex = 3;
             lblTituloRecibo.Text = "Recibo de Pago Por horas Trabajadas";
+            lblTituloRecibo.TextAlign = ContentAlignment.TopCenter;
             // 
             // btnCerrar
             // 
-            btnCerrar.Location = new Point(222, 330);
+            btnCerrar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCerrar.Location = new Point(175, 308);
             btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(75, 23);
+            btnCerrar.Size = new Size(220, 45);
             btnCerrar.TabIndex = 2;
             btnCerrar.Text = "Cerrar";
             btnCerrar.UseVisualStyleBackColor = true;
@@ -192,7 +199,8 @@
             numAntiguedad.Location = new Point(155, 146);
             numAntiguedad.Name = "numAntiguedad";
             numAntiguedad.Size = new Size(120, 23);
-            numAntiguedad.TabIndex = 4;
+            numAntiguedad.TabIndex = 2;
+            numAntiguedad.KeyDown += TextBox_KeyDown;
             // 
             // Form1
             // 
@@ -210,7 +218,7 @@
             Controls.Add(lblAntiguedad);
             Controls.Add(lblName);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Recibo de Pago por Horas";
             ((System.ComponentModel.ISupportInitialize)numValorHora).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCantHoras).EndInit();
             grpRecibo.ResumeLayout(false);
