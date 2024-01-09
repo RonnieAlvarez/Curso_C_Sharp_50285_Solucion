@@ -22,13 +22,15 @@ namespace _03_Ejer1After_4
             this.lblDescuento.Text += CalcularDescuento().ToString();
             this.lblTotalNeto.Text += CalcularTotalNeto().ToString();
             grpRecibo.Visible = true;
+            btnCerrar.Focus();
         }
         private void LimpiarDatosIngresados() {
             grpRecibo.Visible = false;
-            txtName.Text = string.Empty;
+            txtName.Clear();
             numAntiguedad.Value = 0;
             numValorHora.Value = 0;
             numCantHoras.Value = 0;
+            txtName.Focus();
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
