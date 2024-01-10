@@ -41,18 +41,29 @@ namespace _05UserLogin
         }
         private void OnMouseEnterButton1(object sender, EventArgs e)
         {
-            //string hexColor = "#236C9D";
-            //btnLogin.BackColor = Color.FromArgb(35,108,157); // Cambia el color cuando el cursor entra
-            this.BackColor = Color.FromArgb(35, 108, 157);
+            if (btnLogin != null)
+            {
+                btnLogin.BackColor = Color.FromArgb(28, 89, 129);
+            }
+            else
+            {
+                // Manejar el caso en que btnLogin es null
+            }
         }
 
         private void OnMouseLeaveButton1(object sender, EventArgs e)
         {
             //string hexColor = "#2980B9";
-            //btnLogin.BackColor = Color.FromArgb(41, 128, 185); // Cambia el color cuando el cursor sale
-            this.BackColor = Color.FromArgb(41, 128, 185);
-        }
 
-    }
+            if (btnLogin != null)
+            {
+                btnLogin.BackColor = Color.FromArgb(41, 128, 185);
+            }
+            else
+            {
+                // Manejar el caso en que btnLogin es null
+            }
+        }
+    }   
 }
 

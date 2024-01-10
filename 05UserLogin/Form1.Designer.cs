@@ -80,8 +80,6 @@
             btnLogin.Text = "LOGIN";
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
-            btnLogin.Enter += OnMouseEnterButton1;
-            btnLogin.Leave += OnMouseLeaveButton1;
             btnLogin.MouseEnter += OnMouseEnterButton1;
             btnLogin.MouseLeave += OnMouseLeaveButton1;
             // 
