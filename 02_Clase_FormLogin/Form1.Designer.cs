@@ -108,7 +108,6 @@
             txtName.PlaceholderText = "UserName";
             txtName.Size = new Size(127, 23);
             txtName.TabIndex = 1;
-            txtName.TextChanged += txtName_TextChanged;
             // 
             // pictureBox1
             // 
