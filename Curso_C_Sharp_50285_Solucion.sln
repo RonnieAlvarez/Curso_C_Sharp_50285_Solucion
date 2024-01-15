@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04_ClassProducto", "04_Ejem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05_UserLogin", "05UserLogin\05_UserLogin.csproj", "{33475FDF-9021-42BE-BEE8-DA9BE35E7CA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00_Projecto_Final", "00_Projecto_Final\00_Projecto_Final.csproj", "{A4A51FC4-2241-45FE-808B-639D8A51FE56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "00_Projecto_Final", "00_Projecto_Final\00_Projecto_Final.csproj", "{A4A51FC4-2241-45FE-808B-639D8A51FE56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_ListasWF", "06_ListasWF\06_ListasWF.csproj", "{5358627F-0AEB-4820-A99D-47BFDDCC52C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06_ListasWF", "06_ListasWF\06_ListasWF.csproj", "{5358627F-0AEB-4820-A99D-47BFDDCC52C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_Dict", "07_Dict\07_Dict.csproj", "{3DF5A19F-BBF4-448B-8911-B98ACD4BBCB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{5358627F-0AEB-4820-A99D-47BFDDCC52C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5358627F-0AEB-4820-A99D-47BFDDCC52C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5358627F-0AEB-4820-A99D-47BFDDCC52C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DF5A19F-BBF4-448B-8911-B98ACD4BBCB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DF5A19F-BBF4-448B-8911-B98ACD4BBCB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DF5A19F-BBF4-448B-8911-B98ACD4BBCB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DF5A19F-BBF4-448B-8911-B98ACD4BBCB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
