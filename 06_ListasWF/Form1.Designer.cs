@@ -121,6 +121,8 @@
             txtValorIngresado.Size = new Size(316, 23);
             txtValorIngresado.TabIndex = 4;
             txtValorIngresado.Text = "Digite el valor a buscar o eliminar";
+            txtValorIngresado.Enter += txtValorIngresado_TextEnter;
+            txtValorIngresado.KeyDown += txtValorIngresado_KeyDown;
             // 
             // frm_listas
             // 

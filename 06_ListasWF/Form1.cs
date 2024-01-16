@@ -72,11 +72,11 @@ namespace _06_ListasWF
         {
             string valorABuscar = txtValorIngresado.Text;
             bool cityRemoved = false;
-            foreach (var pair in ciudadesxPaises.ToList()) 
+            foreach (var pair in ciudadesxPaises.ToList())
             {
                 if (pair.Key == valorABuscar || pair.Value == valorABuscar)
                 {
-                    ciudadesxPaises.Remove(pair.Key); 
+                    ciudadesxPaises.Remove(pair.Key);
                     cityRemoved = true;
                     break;
                 }
@@ -94,9 +94,14 @@ namespace _06_ListasWF
             {
                 lstCiudadesPais.Items.Add(ciudad.Key + " - " + ciudad.Value);
             }
+            txtValorIngresado.Text = "Digite el valor a buscar o eliminar";
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            buscar();
+        }
+        private void buscar() 
         {
             string valorABuscar = txtValorIngresado.Text;
             string? pais;
@@ -105,13 +110,29 @@ namespace _06_ListasWF
                 ciudadesxPaises.TryGetValue(valorABuscar, out pais);
                 MessageBox.Show($"El pais al que pertenece la ciudad de {valorABuscar} es : " + pais);
             }
+            txtValorIngresado.Text = "Digite el valor a buscar o eliminar";
         }
-
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             ciudadesxPaises.Clear();
             lstCiudadesPais.Items.Clear();
             MessageBox.Show("Se limpio el contenido del diccionario !!");
+        }
+
+        private void txtValorIngresado_TextEnter(object sender, EventArgs e)
+        {
+            txtValorIngresado.Text = "";
+        }
+
+        private void txtValorIngresado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtValorIngresado.Text != string.Empty)
+                {
+                    buscar();
+                }
+            }
         }
     }
 
