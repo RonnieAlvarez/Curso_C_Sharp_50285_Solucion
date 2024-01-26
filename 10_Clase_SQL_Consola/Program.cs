@@ -24,11 +24,17 @@ namespace _10_Clase_SQL_Consola.database
                 //{
                 //    Console.WriteLine($"Se elimino el usuario No: {sid} a la db");
                 //}
-                int sid = 3;
-                Usuario usuarioActualizar = new ("Ramon", "Lopez", "pera", "12345", "peGapp@gmail.com");
-                if (db.UpdateUsuarioPorId(@sid,usuarioActualizar))
+                //int sid = 3;
+                //Usuario usuarioActualizar = new ("Ramon", "Lopez", "pera", "12345", "peGapp@gmail.com");
+                //if (db.UpdateUsuarioPorId(@sid,usuarioActualizar))
+                //{
+                //    Console.WriteLine($"Se Actualizo el usuario No: {sid} en la db");
+                //}
+
+                List<Usuario> usuarios = db.ListarUsuarios();
+                foreach (Usuario usuario in usuarios)
                 {
-                    Console.WriteLine($"Se Actualizo el usuario No: {sid} en la db");
+                    Console.WriteLine(usuario.ToString());
                 }
             }
             catch (Exception ex) 

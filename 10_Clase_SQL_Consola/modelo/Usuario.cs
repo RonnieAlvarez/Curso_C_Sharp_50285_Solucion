@@ -39,7 +39,7 @@ namespace _10_Clase_SQL_Consola.modelo
 
         public override string ToString()
         {
-            return $"Nombre: {this.Nombre}, Apellido: {this.Apellido}";
+            return $"Nombre: {this.Nombre}, Apellido: {this.Apellido}, Nombre Usuario: {this.NombreUsuario}, email: {this.Email}";
         }
     }
 }
