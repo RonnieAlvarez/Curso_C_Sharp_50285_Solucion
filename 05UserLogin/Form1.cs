@@ -6,8 +6,8 @@ namespace _05UserLogin
         public Form1()
         {
             InitializeComponent();
-           // btnLogin.MouseEnter += OnMouseEnterButton1;
-           // btnLogin.MouseLeave += OnMouseLeaveButton1;
+            // btnLogin.MouseEnter += OnMouseEnterButton1;
+            // btnLogin.MouseLeave += OnMouseLeaveButton1;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -45,8 +45,8 @@ namespace _05UserLogin
         {
             if (btnLogin != null)
             {
-                
-                    Button btnLogin = (Button)sender;
+
+                Button btnLogin = (Button)sender;
                 //btnLogin.BackColor = Color.FromArgb(28, 89, 129);
                 //btnLogin.BackColor = Color.FromArgb(28, 89, 29);
                 btnLogin.BackColor = Color.Red; btnLogin.ForeColor = Color.Green;
@@ -72,6 +72,8 @@ namespace _05UserLogin
                 // Manejar el caso en que btnLogin es null
             }
         }
-    }   
+
+       
+    }
 }
 
