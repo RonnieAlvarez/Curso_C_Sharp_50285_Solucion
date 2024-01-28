@@ -10,7 +10,7 @@ namespace _10_SQL_formulario.db
         {
             this.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
         }
-        public modelo.Usuario ObtenerUsuarioPorId(int id)
+        public modelo.clsUsuario ObtenerUsuarioPorId(int id)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -28,14 +28,14 @@ namespace _10_SQL_formulario.db
                     string password = reader.GetString(4);
                     string email = reader.GetString(5);
 
-                    modelo.Usuario usuario = new modelo.Usuario(id, nombre, apellido, nombreUsuario, password, email);
+                    modelo.clsUsuario usuario = new modelo.clsUsuario(id, nombre, apellido, nombreUsuario, password, email);
 
                     return usuario;
                 }
                 throw new Exception("Id No encontrado");
             }
         }
-        public bool AgregarUsuario(modelo.Usuario usuario)
+        public bool AgregarUsuario(modelo.clsUsuario usuario)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -65,7 +65,7 @@ namespace _10_SQL_formulario.db
             throw new Exception(message: "Usuario no encontrado");
         }
 
-        public bool UpdateUsuarioPorId(int id, modelo.Usuario usuario)
+        public bool UpdateUsuarioPorId(int id, modelo.clsUsuario usuario)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -82,9 +82,9 @@ namespace _10_SQL_formulario.db
             }
             throw new Exception(message: "Usuario Actualizado");
         }
-        public List<modelo.Usuario> ListarUsuarios()
+        public List<modelo.clsUsuario> ListarUsuarios()
         {
-            List<modelo.Usuario> usuarios = new List<modelo.Usuario>();
+            List<modelo.clsUsuario> usuarios = new List<modelo.clsUsuario>();
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
                 string query = "SELECT * FROM Usuario";
@@ -100,7 +100,7 @@ namespace _10_SQL_formulario.db
                     string password = reader.GetString(4);
                     string email = reader.GetString(5);
 
-                    modelo.Usuario usuario = new modelo.Usuario(idObtenido, nombre, apellido, nombreUsuario, password, email);
+                    modelo.clsUsuario usuario = new modelo.clsUsuario(idObtenido, nombre, apellido, nombreUsuario, password, email);
                     usuarios.Add(usuario);
                 }
                 return usuarios;

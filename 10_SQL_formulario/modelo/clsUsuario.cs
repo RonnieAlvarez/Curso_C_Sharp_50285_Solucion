@@ -1,7 +1,7 @@
 ﻿
 namespace _10_SQL_formulario.modelo
 {
-    internal class Usuario
+    internal class clsUsuario
     {
         private int id;
         private string nombre;
@@ -11,7 +11,7 @@ namespace _10_SQL_formulario.modelo
         private string email;
 
         //public Usuario() { }
-        public Usuario(string nombre, string apellido, string nombreUsuario, string password, string email)
+        public clsUsuario(string nombre, string apellido, string nombreUsuario, string password, string email)
         {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -19,7 +19,7 @@ namespace _10_SQL_formulario.modelo
             this.password = password;
             this.email = email;
         }
-        public Usuario(int id, string nombre, string apellido, string nombreUsuario, string password, string email) :
+        public clsUsuario(int id, string nombre, string apellido, string nombreUsuario, string password, string email) :
             this(nombre, apellido, nombreUsuario, password, email)
         {
             this.id = id;

@@ -10,11 +10,7 @@ namespace _10_SQL_formulario
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            panel3.Visible = true;
-
-        }
+   
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return)
@@ -35,12 +31,13 @@ namespace _10_SQL_formulario
             textBox.BackColor = Color.White;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Usuarios frmUsuarios = new();
+            frmUsuarios frmUsuarios = new frmUsuarios();
             frmUsuarios.Show();
         }
+
+   
     }
 }
 

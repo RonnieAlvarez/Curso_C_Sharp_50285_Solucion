@@ -1,6 +1,6 @@
 ﻿namespace _10_SQL_formulario.formularios
 {
-    partial class Usuarios
+    partial class frmUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@
             btnLogin = new Button();
             panel1 = new Panel();
             panel3 = new Panel();
+            dataGridView1 = new DataGridView();
             btnClose = new Button();
             lblTitulo = new Label();
             panel2 = new Panel();
@@ -38,12 +39,11 @@
             label1 = new Label();
             lblWelcome = new Label();
             pictureBox1 = new PictureBox();
-            dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // btnLogin
@@ -69,20 +69,27 @@
             panel1.Controls.Add(btnLogin);
             panel1.Controls.Add(lblTitulo);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(294, 0);
+            panel1.Location = new Point(300, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(506, 350);
+            panel1.Size = new Size(700, 350);
             panel1.TabIndex = 0;
-            //panel1.Paint += panel1_Paint;
             // 
             // panel3
             // 
             panel3.Controls.Add(dataGridView1);
             panel3.Location = new Point(18, 53);
             panel3.Name = "panel3";
-            panel3.Size = new Size(474, 236);
+            panel3.Size = new Size(650, 235);
             panel3.TabIndex = 10;
-            panel3.Visible = false;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(650, 235);
+            dataGridView1.TabIndex = 0;
             // 
             // btnClose
             // 
@@ -93,19 +100,20 @@
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Verdana", 16F, FontStyle.Bold, GraphicsUnit.Point);
             btnClose.ForeColor = Color.FromArgb(41, 128, 185);
-            btnClose.Location = new Point(465, -2);
+            btnClose.Location = new Point(659, -2);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(39, 36);
             btnClose.TabIndex = 8;
             btnClose.Text = "X";
             btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Century Gothic", 15F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitulo.ForeColor = Color.FromArgb(41, 128, 185);
-            lblTitulo.Location = new Point(202, 11);
+            lblTitulo.Location = new Point(298, 11);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(106, 23);
             lblTitulo.TabIndex = 0;
@@ -168,34 +176,26 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(474, 236);
-            dataGridView1.TabIndex = 0;
-            // 
-            // Usuarios
+            // frmUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 350);
+            ClientSize = new Size(1000, 350);
             ControlBox = false;
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Usuarios";
+            Name = "frmUsuarios";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Usuarios";
+            Load += frmUsuarios_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 

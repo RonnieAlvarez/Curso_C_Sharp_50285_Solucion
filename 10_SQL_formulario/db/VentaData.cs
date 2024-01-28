@@ -16,7 +16,7 @@ namespace _10_SQL_formulario.db
         {
             this.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
         }
-        public modelo.Venta ObtenerVentaPorId(int id)
+        public modelo.clsVenta ObtenerVentaPorId(int id)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -32,14 +32,14 @@ namespace _10_SQL_formulario.db
                     int idUsuario = Convert.ToInt32(reader[2]);
                     
 
-                    modelo.Venta venta = new modelo.Venta(id, comentarios,idUsuario);
+                    modelo.clsVenta venta = new modelo.clsVenta(id, comentarios,idUsuario);
 
                     return venta;
                 }
                 throw new Exception("Id No encontrado");
             }
         }
-        public bool AgregarVenta(modelo.Venta venta)
+        public bool AgregarVenta(modelo.clsVenta venta)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -67,7 +67,7 @@ namespace _10_SQL_formulario.db
             throw new Exception(message: "Venta no encontrada");
         }
 
-        public bool UpdateVentaPorId(int id, modelo.Venta venta)
+        public bool UpdateVentaPorId(int id, modelo.clsVenta venta)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -82,9 +82,9 @@ namespace _10_SQL_formulario.db
             }
             throw new Exception(message: "Venta Actualizada");
         }
-        public List<modelo.Venta> ListarVentas()
+        public List<modelo.clsVenta> ListarVentas()
         {
-            List<modelo.Venta> lstVentas = new List<modelo.Venta>();
+            List<modelo.clsVenta> lstVentas = new List<modelo.clsVenta>();
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
                 string query = "SELECT * FROM Venta";
@@ -97,7 +97,7 @@ namespace _10_SQL_formulario.db
                     string comentarios = reader.GetString(1);
                     int idUsuario = Convert.ToInt32(reader[2]);
 
-                    modelo.Venta venta = new modelo.Venta(idObtenido, comentarios, idUsuario);
+                    modelo.clsVenta venta = new modelo.clsVenta(idObtenido, comentarios, idUsuario);
                     lstVentas.Add(venta);
                 }
                 return lstVentas;

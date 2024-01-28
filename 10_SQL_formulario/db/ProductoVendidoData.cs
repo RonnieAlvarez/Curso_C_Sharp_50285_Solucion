@@ -12,7 +12,7 @@ namespace _10_SQL_formulario.db
         {
             this.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
         }
-        public modelo.ProductoVendido ObtenerProductoVendidoPorId(int id)
+        public modelo.clsProductoVendido ObtenerProductoVendidoPorId(int id)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -28,14 +28,14 @@ namespace _10_SQL_formulario.db
                     int idProducto = Convert.ToInt32(reader[2]);
                     int idVenta = Convert.ToInt32(reader[3]);
 
-                    modelo.ProductoVendido productoVendido = new modelo.ProductoVendido(id, stock, idProducto, idVenta);
+                    modelo.clsProductoVendido productoVendido = new modelo.clsProductoVendido(id, stock, idProducto, idVenta);
 
                     return productoVendido;
                 }
                 throw new Exception("Id No encontrado");
             }
         }
-        public bool AgregarProductoVendido(modelo.ProductoVendido productoVendido)
+        public bool AgregarProductoVendido(modelo.clsProductoVendido productoVendido)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -63,7 +63,7 @@ namespace _10_SQL_formulario.db
             throw new Exception(message: "Producto Vendido no encontrado");
         }
 
-        public bool UpdateProductoVendidoPorId(int id, modelo.ProductoVendido productoVendido)
+        public bool UpdateProductoVendidoPorId(int id, modelo.clsProductoVendido productoVendido)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -78,9 +78,9 @@ namespace _10_SQL_formulario.db
             }
             throw new Exception(message: "Producto Vendido Actualizado");
         }
-        public List<modelo.ProductoVendido> ListarProductoVendido()
+        public List<modelo.clsProductoVendido> ListarProductoVendido()
         {
-            List<modelo.ProductoVendido> lstProductoVendido = new List<modelo.ProductoVendido>();
+            List<modelo.clsProductoVendido> lstProductoVendido = new List<modelo.clsProductoVendido>();
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
                 string query = "SELECT * FROM productoVendido";
@@ -94,7 +94,7 @@ namespace _10_SQL_formulario.db
                     int idProducto = Convert.ToInt32(reader[2]);
                     int idVenta = Convert.ToInt32(reader[3]);
 
-                    modelo.ProductoVendido productoVendido = new modelo.ProductoVendido(idObtenido, stock, idProducto, idVenta);
+                    modelo.clsProductoVendido productoVendido = new modelo.clsProductoVendido(idObtenido, stock, idProducto, idVenta);
                     lstProductoVendido.Add(productoVendido);
                 }
                 return lstProductoVendido;

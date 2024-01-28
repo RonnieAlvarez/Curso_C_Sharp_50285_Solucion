@@ -12,7 +12,7 @@ namespace _10_SQL_formulario.db
         {
             this.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
         }
-        public modelo.Producto ObtenerProductoPorId(int id)
+        public modelo.clsProducto ObtenerProductoPorId(int id)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -30,14 +30,14 @@ namespace _10_SQL_formulario.db
                     int stock = Convert.ToInt32(reader[4]);
                     int idUsuario = Convert.ToInt32(reader[5]);
 
-                    modelo.Producto producto = new modelo.Producto(id, descripciones, costo, precioVenta, stock, idUsuario);
+                    modelo.clsProducto producto = new modelo.clsProducto(id, descripciones, costo, precioVenta, stock, idUsuario);
 
                     return producto;
                 }
                 throw new Exception("Id No encontrado");
             }
         }
-        public bool AgregarpRODUCTO(modelo.Producto producto)
+        public bool AgregarpRODUCTO(modelo.clsProducto producto)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -67,7 +67,7 @@ namespace _10_SQL_formulario.db
             throw new Exception(message: "Producto no encontrado");
         }
 
-        public bool UpdateProductoPorId(int id, modelo.Producto producto)
+        public bool UpdateProductoPorId(int id, modelo.clsProducto producto)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -83,9 +83,9 @@ namespace _10_SQL_formulario.db
             }
             throw new Exception(message: "Producto Actualizado");
         }
-        public List<modelo.Producto> ListarProductos()
+        public List<modelo.clsProducto> ListarProductos()
         {
-            List<modelo.Producto> productos = new List<modelo.Producto>();
+            List<modelo.clsProducto> productos = new List<modelo.clsProducto>();
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
                 string query = "SELECT * FROM Producto";
@@ -101,7 +101,7 @@ namespace _10_SQL_formulario.db
                     int stock = Convert.ToInt32(reader[4]);
                     int idUsuario = Convert.ToInt32(reader[5]);
 
-                    modelo.Producto producto = new modelo.Producto(idObtenido, descripciones, costo, precioVenta, stock, idUsuario);
+                    modelo.clsProducto producto = new modelo.clsProducto(idObtenido, descripciones, costo, precioVenta, stock, idUsuario);
                     productos.Add(producto);
                 }
                 return productos;

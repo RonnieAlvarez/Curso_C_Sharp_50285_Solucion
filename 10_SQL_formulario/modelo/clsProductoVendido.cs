@@ -1,13 +1,13 @@
 ﻿namespace _10_SQL_formulario.modelo
 {
-    internal class ProductoVendido
+    internal class clsProductoVendido
     {
         int id;
         int idProducto;
         int stock;
         int idVenta;
 
-        public ProductoVendido()
+        public clsProductoVendido()
         {
             this.id = 0;
             this.idProducto = 0;
@@ -15,7 +15,7 @@
             this.idVenta = 0;
 
         }
-        public ProductoVendido(int id, int idProducto, int stock, int idVenta)
+        public clsProductoVendido(int id, int idProducto, int stock, int idVenta)
         {
             this.id = id;
             this.idProducto = idProducto;

@@ -1,6 +1,6 @@
 ﻿namespace _10_SQL_formulario.modelo
 {
-    internal class Producto
+    internal class clsProducto
     {
         int id;
         string descripciones;
@@ -10,7 +10,7 @@
         int idUsuario;
 
 
-        public Producto() 
+        public clsProducto() 
         {
             this.id = 0;
             this.descripciones=string.Empty;
@@ -19,7 +19,7 @@
             this.stock = 0;
             this.idUsuario = 0;
         }
-        public Producto(int id, string descripciones, decimal costo, decimal precioVenta, int stock, int idUsuario)
+        public clsProducto(int id, string descripciones, decimal costo, decimal precioVenta, int stock, int idUsuario)
         {
             this.id = id;
             this.descripciones = descripciones;

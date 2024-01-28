@@ -1,18 +1,18 @@
 ﻿namespace _10_SQL_formulario.modelo
 {
-    internal class Venta
+    internal class clsVenta
     {
         int id;
         string comentarios;
         int idUsuario;
 
-        public Venta()
+        public clsVenta()
         {
             this.id = 0;
             this.comentarios=string.Empty;
             this.idUsuario=0;
         }
-        public Venta(int id, string comentarios, int idUsuario)
+        public clsVenta(int id, string comentarios, int idUsuario)
         {
             this.id = id;
             this.comentarios = comentarios;
