@@ -11,7 +11,14 @@
         ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         #region Windows Form Designer generated code
 
@@ -45,7 +52,7 @@
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-
+            SuspendLayout();
             // 
             // btnLogin
             // 
@@ -75,7 +82,6 @@
             button1.TabIndex = 7;
             button1.Text = "Productos";
             button1.UseVisualStyleBackColor = false;
-            
             // 
             // button2
             // 
@@ -90,7 +96,7 @@
             button2.TabIndex = 7;
             button2.Text = "Usuarios";
             button2.UseVisualStyleBackColor = false;
-            
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -105,7 +111,6 @@
             button3.TabIndex = 7;
             button3.Text = "Ventas";
             button3.UseVisualStyleBackColor = false;
-            
             // 
             // button4
             // 
@@ -120,7 +125,6 @@
             button4.TabIndex = 7;
             button4.Text = "Producto Vendido";
             button4.UseVisualStyleBackColor = false;
-            
             // 
             // panel1
             // 

@@ -15,6 +15,16 @@ namespace _10_SQL_formulario.formularios
         public Usuarios()
         {
             InitializeComponent();
+            UsuariosListar();
         }
+
+        private void UsuariosListar()
+        {
+            List<modelo.Usuario> listaUsuarios = new List<modelo.Usuario>();
+            dataGridView1.DataSource = listaUsuarios;
+            dataGridView1.AutoGenerateColumns = true;
+        }
+
+      
     }
 }

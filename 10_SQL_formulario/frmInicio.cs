@@ -1,6 +1,8 @@
+using _10_SQL_formulario.formularios;
+
 namespace _10_SQL_formulario
 {
-    public partial class frmInicio:Form
+    public partial class frmInicio : Form
     {
 
         public frmInicio()
@@ -32,13 +34,13 @@ namespace _10_SQL_formulario
             TextBox textBox = (TextBox)sender;
             textBox.BackColor = Color.White;
         }
-  
 
-  
-
-    
-
-   
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Usuarios frmUsuarios = new();
+            frmUsuarios.Show();
+        }
     }
 }
 

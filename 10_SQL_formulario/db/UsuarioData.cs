@@ -1,18 +1,12 @@
-﻿using _10_SQL_formulario.modelo;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 
 namespace _10_SQL_formulario.db
 {
-    internal class GestorDB
+    internal class UsuarioData
     {
         private string stringConnection;
 
-        public GestorDB()
+        public UsuarioData()
         {
             this.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
         }

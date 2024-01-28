@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace _10_SQL_formulario.modelo
 {
     internal class Usuario
@@ -15,7 +10,7 @@ namespace _10_SQL_formulario.modelo
         private string password;
         private string email;
 
-        public Usuario() { }
+        //public Usuario() { }
         public Usuario(string nombre, string apellido, string nombreUsuario, string password, string email)
         {
             this.nombre = nombre;
