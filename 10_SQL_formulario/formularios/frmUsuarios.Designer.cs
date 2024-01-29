@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnLogin = new Button();
+            btnBuscarUsuarioXiD = new Button();
             panel1 = new Panel();
             panel3 = new Panel();
             dataGridView1 = new DataGridView();
@@ -46,19 +46,20 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // btnLogin
+            // btnBuscarUsuarioXiD
             // 
-            btnLogin.BackColor = Color.FromArgb(0, 192, 192);
-            btnLogin.CausesValidation = false;
-            btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLogin.ForeColor = SystemColors.ControlLightLight;
-            btnLogin.Location = new Point(137, 301);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(209, 35);
-            btnLogin.TabIndex = 7;
-            btnLogin.Text = "ENTRAR";
-            btnLogin.UseVisualStyleBackColor = false;
+            btnBuscarUsuarioXiD.BackColor = Color.FromArgb(0, 192, 192);
+            btnBuscarUsuarioXiD.CausesValidation = false;
+            btnBuscarUsuarioXiD.FlatStyle = FlatStyle.Flat;
+            btnBuscarUsuarioXiD.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBuscarUsuarioXiD.ForeColor = SystemColors.ControlLightLight;
+            btnBuscarUsuarioXiD.Location = new Point(18, 303);
+            btnBuscarUsuarioXiD.Name = "btnBuscarUsuarioXiD";
+            btnBuscarUsuarioXiD.Size = new Size(121, 35);
+            btnBuscarUsuarioXiD.TabIndex = 7;
+            btnBuscarUsuarioXiD.Text = "Buscar X ID";
+            btnBuscarUsuarioXiD.UseVisualStyleBackColor = false;
+            btnBuscarUsuarioXiD.Click += this.btnBuscarUsuarioXiD_Click;
             // 
             // panel1
             // 
@@ -66,7 +67,7 @@
             panel1.BorderStyle = BorderStyle.Fixed3D;
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(btnClose);
-            panel1.Controls.Add(btnLogin);
+            panel1.Controls.Add(btnBuscarUsuarioXiD);
             panel1.Controls.Add(lblTitulo);
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(300, 0);
@@ -90,6 +91,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(650, 235);
             dataGridView1.TabIndex = 0;
+            dataGridView1.Visible = false;
             // 
             // btnClose
             // 
@@ -180,13 +182,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.None;
             ClientSize = new Size(1000, 350);
             ControlBox = false;
             Controls.Add(panel2);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
             Name = "frmUsuarios";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Usuarios";
             Load += frmUsuarios_Load;
             panel1.ResumeLayout(false);
@@ -203,7 +205,7 @@
 
         private Panel panel1;
         private Label lblTitulo;
-        private Button btnLogin;
+        private Button btnBuscarUsuarioXiD;
         private Panel panel2;
         private PictureBox pictureBox1;
         private Label lblWelcome;

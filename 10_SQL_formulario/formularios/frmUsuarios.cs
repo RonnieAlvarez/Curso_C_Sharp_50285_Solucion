@@ -26,16 +26,21 @@ namespace _10_SQL_formulario.formularios
         }
         private void UsuariosListar(List<modelo.clsUsuario> lstUsuarios)
         {
+            dataGridView1.Visible = true;
             dataGridView1.DataSource = lstUsuarios;
             dataGridView1.AutoGenerateColumns = true;
-            btnLogin.Visible = false;
             panel3.Visible = true;
             lblTitulo.Text = "LISTADO DE USUARIOS";
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            btnLogin.Visible = true;
+            btnBuscarUsuarioXiD.Visible = true;
+        }
+        private void btnBuscarUsuarioXiD_Click(object sender, EventArgs e)
+        {
+            frmConsultaXId frmConsultaXId = new frmConsultaXId();
+            frmConsultaXId.Show();
         }
     }
 }
