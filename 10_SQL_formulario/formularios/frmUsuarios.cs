@@ -19,10 +19,13 @@ namespace _10_SQL_formulario.formularios
         }
         private void frmUsuarios_Load(object sender, EventArgs e)
         {
+            obtenerDatos();
+        }
+        public void obtenerDatos()
+        {
             UsuarioData dbUsuario = new UsuarioData();
             List<modelo.clsUsuario> lstUsuarios = dbUsuario.ListarUsuarios();
             UsuariosListar(lstUsuarios);
-
         }
         private void UsuariosListar(List<modelo.clsUsuario> lstUsuarios)
         {
@@ -41,6 +44,7 @@ namespace _10_SQL_formulario.formularios
         {
             frmConsultaXId frmConsultaXId = new frmConsultaXId();
             frmConsultaXId.Show();
+            
         }
     }
 }

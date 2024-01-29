@@ -30,6 +30,9 @@
         {
             btnClose = new Button();
             panel1 = new Panel();
+            btnBorrarUsuarioxID = new Button();
+            btnActualizaUsuarioxID = new Button();
+            lblTituloUsuarioxID = new Label();
             txtEmail = new TextBox();
             txtContrasena = new TextBox();
             txtNombreUsuario = new TextBox();
@@ -58,6 +61,9 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnBorrarUsuarioxID);
+            panel1.Controls.Add(btnActualizaUsuarioxID);
+            panel1.Controls.Add(lblTituloUsuarioxID);
             panel1.Controls.Add(txtEmail);
             panel1.Controls.Add(txtContrasena);
             panel1.Controls.Add(txtNombreUsuario);
@@ -68,6 +74,35 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(341, 290);
             panel1.TabIndex = 10;
+            // 
+            // btnBorrarUsuarioxID
+            // 
+            btnBorrarUsuarioxID.Location = new Point(192, 242);
+            btnBorrarUsuarioxID.Name = "btnBorrarUsuarioxID";
+            btnBorrarUsuarioxID.Size = new Size(102, 23);
+            btnBorrarUsuarioxID.TabIndex = 2;
+            btnBorrarUsuarioxID.Text = "Borrar Usuario";
+            btnBorrarUsuarioxID.UseVisualStyleBackColor = true;
+            btnBorrarUsuarioxID.Click += btnBorrarUsuarioxID_Click;
+            // 
+            // btnActualizaUsuarioxID
+            // 
+            btnActualizaUsuarioxID.Location = new Point(49, 242);
+            btnActualizaUsuarioxID.Name = "btnActualizaUsuarioxID";
+            btnActualizaUsuarioxID.Size = new Size(123, 23);
+            btnActualizaUsuarioxID.TabIndex = 2;
+            btnActualizaUsuarioxID.Text = "Actualizar Usuario";
+            btnActualizaUsuarioxID.UseVisualStyleBackColor = true;
+            btnActualizaUsuarioxID.Click += btnActualizaUsuarioxID_Click;
+            // 
+            // lblTituloUsuarioxID
+            // 
+            lblTituloUsuarioxID.AutoSize = true;
+            lblTituloUsuarioxID.Location = new Point(95, 12);
+            lblTituloUsuarioxID.Name = "lblTituloUsuarioxID";
+            lblTituloUsuarioxID.Size = new Size(158, 15);
+            lblTituloUsuarioxID.TabIndex = 1;
+            lblTituloUsuarioxID.Text = "INFORMACION DE USUARIO";
             // 
             // txtEmail
             // 
@@ -147,5 +182,8 @@
         private TextBox txtNombreUsuario;
         private TextBox txtApellido;
         private TextBox txtNombre;
+        private Label lblTituloUsuarioxID;
+        private Button btnActualizaUsuarioxID;
+        private Button btnBorrarUsuarioxID;
     }
 }

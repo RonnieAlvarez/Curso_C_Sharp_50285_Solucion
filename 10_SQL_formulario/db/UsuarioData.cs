@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace _10_SQL_formulario.db
 {
@@ -10,7 +11,7 @@ namespace _10_SQL_formulario.db
         {
             this.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
         }
-        public modelo.clsUsuario ObtenerUsuarioPorId(int id)
+          public modelo.clsUsuario ObtenerUsuarioPorId(int id)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
