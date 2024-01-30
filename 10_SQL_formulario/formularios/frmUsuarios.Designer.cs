@@ -28,11 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnBuscarUsuarioXiD = new Button();
             panel1 = new Panel();
+            btnBorrarUsuarioxID = new Button();
+            panel4 = new Panel();
+            txtEmail = new TextBox();
+            txtContrasena = new TextBox();
+            txtNombreUsuario = new TextBox();
+            txtApellido = new TextBox();
+            txtNombre = new TextBox();
+            txtID = new TextBox();
+            btnActualizaUsuarioxID = new Button();
             panel3 = new Panel();
             dataGridView1 = new DataGridView();
             btnClose = new Button();
+            btnBuscarUsuarioXiD = new Button();
             lblTitulo = new Label();
             panel2 = new Panel();
             label2 = new Label();
@@ -40,31 +49,20 @@
             lblWelcome = new Label();
             pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
+            panel4.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // btnBuscarUsuarioXiD
-            // 
-            btnBuscarUsuarioXiD.BackColor = Color.FromArgb(0, 192, 192);
-            btnBuscarUsuarioXiD.CausesValidation = false;
-            btnBuscarUsuarioXiD.FlatStyle = FlatStyle.Flat;
-            btnBuscarUsuarioXiD.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBuscarUsuarioXiD.ForeColor = SystemColors.ControlLightLight;
-            btnBuscarUsuarioXiD.Location = new Point(18, 303);
-            btnBuscarUsuarioXiD.Name = "btnBuscarUsuarioXiD";
-            btnBuscarUsuarioXiD.Size = new Size(121, 35);
-            btnBuscarUsuarioXiD.TabIndex = 7;
-            btnBuscarUsuarioXiD.Text = "Buscar X ID";
-            btnBuscarUsuarioXiD.UseVisualStyleBackColor = false;
-            btnBuscarUsuarioXiD.Click += this.btnBuscarUsuarioXiD_Click;
-            // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(224, 224, 224);
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(btnBorrarUsuarioxID);
+            panel1.Controls.Add(panel4);
+            panel1.Controls.Add(btnActualizaUsuarioxID);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(btnClose);
             panel1.Controls.Add(btnBuscarUsuarioXiD);
@@ -72,13 +70,93 @@
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(300, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(700, 350);
+            panel1.Size = new Size(700, 550);
             panel1.TabIndex = 0;
+            // 
+            // btnBorrarUsuarioxID
+            // 
+            btnBorrarUsuarioxID.Location = new Point(350, 274);
+            btnBorrarUsuarioxID.Name = "btnBorrarUsuarioxID";
+            btnBorrarUsuarioxID.Size = new Size(102, 23);
+            btnBorrarUsuarioxID.TabIndex = 2;
+            btnBorrarUsuarioxID.Text = "Borrar Usuario";
+            btnBorrarUsuarioxID.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(txtEmail);
+            panel4.Controls.Add(txtContrasena);
+            panel4.Controls.Add(txtNombreUsuario);
+            panel4.Controls.Add(txtApellido);
+            panel4.Controls.Add(txtNombre);
+            panel4.Controls.Add(txtID);
+            panel4.Location = new Point(24, 51);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(650, 174);
+            panel4.TabIndex = 11;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(159, 130);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "eMail";
+            txtEmail.Size = new Size(291, 23);
+            txtEmail.TabIndex = 0;
+            // 
+            // txtContrasena
+            // 
+            txtContrasena.Location = new Point(326, 90);
+            txtContrasena.Name = "txtContrasena";
+            txtContrasena.PlaceholderText = "Contraseña";
+            txtContrasena.Size = new Size(245, 23);
+            txtContrasena.TabIndex = 0;
+            // 
+            // txtNombreUsuario
+            // 
+            txtNombreUsuario.Location = new Point(48, 90);
+            txtNombreUsuario.Name = "txtNombreUsuario";
+            txtNombreUsuario.PlaceholderText = "Nombre Usuario";
+            txtNombreUsuario.Size = new Size(245, 23);
+            txtNombreUsuario.TabIndex = 0;
+            // 
+            // txtApellido
+            // 
+            txtApellido.Location = new Point(326, 53);
+            txtApellido.Name = "txtApellido";
+            txtApellido.PlaceholderText = "Apellido";
+            txtApellido.Size = new Size(245, 23);
+            txtApellido.TabIndex = 0;
+            // 
+            // txtNombre
+            // 
+            txtNombre.Location = new Point(48, 53);
+            txtNombre.Name = "txtNombre";
+            txtNombre.PlaceholderText = "Nombre";
+            txtNombre.Size = new Size(245, 23);
+            txtNombre.TabIndex = 0;
+            // 
+            // txtID
+            // 
+            txtID.Location = new Point(258, 14);
+            txtID.Name = "txtID";
+            txtID.PlaceholderText = "Id";
+            txtID.Size = new Size(100, 23);
+            txtID.TabIndex = 0;
+            txtID.KeyDown += txtID_KeyDown;
+            // 
+            // btnActualizaUsuarioxID
+            // 
+            btnActualizaUsuarioxID.Location = new Point(183, 272);
+            btnActualizaUsuarioxID.Name = "btnActualizaUsuarioxID";
+            btnActualizaUsuarioxID.Size = new Size(123, 23);
+            btnActualizaUsuarioxID.TabIndex = 2;
+            btnActualizaUsuarioxID.Text = "Actualizar Usuario";
+            btnActualizaUsuarioxID.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
             panel3.Controls.Add(dataGridView1);
-            panel3.Location = new Point(18, 53);
+            panel3.Location = new Point(24, 301);
             panel3.Name = "panel3";
             panel3.Size = new Size(650, 235);
             panel3.TabIndex = 10;
@@ -110,6 +188,20 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
+            // btnBuscarUsuarioXiD
+            // 
+            btnBuscarUsuarioXiD.BackColor = Color.FromArgb(0, 192, 192);
+            btnBuscarUsuarioXiD.CausesValidation = false;
+            btnBuscarUsuarioXiD.FlatStyle = FlatStyle.Flat;
+            btnBuscarUsuarioXiD.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBuscarUsuarioXiD.ForeColor = SystemColors.ControlLightLight;
+            btnBuscarUsuarioXiD.Location = new Point(24, 260);
+            btnBuscarUsuarioXiD.Name = "btnBuscarUsuarioXiD";
+            btnBuscarUsuarioXiD.Size = new Size(121, 35);
+            btnBuscarUsuarioXiD.TabIndex = 7;
+            btnBuscarUsuarioXiD.Text = "Buscar X ID";
+            btnBuscarUsuarioXiD.UseVisualStyleBackColor = false;
+            // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
@@ -132,7 +224,7 @@
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(288, 350);
+            panel2.Size = new Size(288, 550);
             panel2.TabIndex = 1;
             // 
             // label2
@@ -182,17 +274,19 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            StartPosition = FormStartPosition.CenterScreen;
-            FormBorderStyle = FormBorderStyle.None;
-            ClientSize = new Size(1000, 350);
+            ClientSize = new Size(1000, 550);
             ControlBox = false;
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmUsuarios";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Usuarios";
             Load += frmUsuarios_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
@@ -205,7 +299,6 @@
 
         private Panel panel1;
         private Label lblTitulo;
-        private Button btnBuscarUsuarioXiD;
         private Panel panel2;
         private PictureBox pictureBox1;
         private Label lblWelcome;
@@ -214,6 +307,16 @@
         private Button btnClose;
         private Panel panel3;
         private DataGridView dataGridView1;
+        private Panel panel4;
+        private Button btnBorrarUsuarioxID;
+        private Button btnActualizaUsuarioxID;
+        private TextBox txtEmail;
+        private TextBox txtContrasena;
+        private TextBox txtNombreUsuario;
+        private TextBox txtApellido;
+        private TextBox txtNombre;
+        private TextBox txtID;
+        private Button btnBuscarUsuarioXiD;
     }
 
      
