@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarios));
             panel1 = new Panel();
             btnBorrarUsuarioxID = new Button();
             panel4 = new Panel();
+            btnLimpiarDatos = new Button();
             txtEmail = new TextBox();
             txtContrasena = new TextBox();
             txtNombreUsuario = new TextBox();
             txtApellido = new TextBox();
             txtNombre = new TextBox();
             txtID = new TextBox();
+            btnAgregarUsuario = new Button();
             btnActualizaUsuarioxID = new Button();
             panel3 = new Panel();
             dataGridView1 = new DataGridView();
@@ -62,6 +65,7 @@
             panel1.BorderStyle = BorderStyle.Fixed3D;
             panel1.Controls.Add(btnBorrarUsuarioxID);
             panel1.Controls.Add(panel4);
+            panel1.Controls.Add(btnAgregarUsuario);
             panel1.Controls.Add(btnActualizaUsuarioxID);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(btnClose);
@@ -75,15 +79,22 @@
             // 
             // btnBorrarUsuarioxID
             // 
-            btnBorrarUsuarioxID.Location = new Point(350, 274);
+            btnBorrarUsuarioxID.BackColor = Color.Red;
+            btnBorrarUsuarioxID.CausesValidation = false;
+            btnBorrarUsuarioxID.FlatStyle = FlatStyle.Flat;
+            btnBorrarUsuarioxID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBorrarUsuarioxID.ForeColor = SystemColors.ControlLightLight;
+            btnBorrarUsuarioxID.Location = new Point(552, 260);
             btnBorrarUsuarioxID.Name = "btnBorrarUsuarioxID";
-            btnBorrarUsuarioxID.Size = new Size(102, 23);
-            btnBorrarUsuarioxID.TabIndex = 2;
+            btnBorrarUsuarioxID.Size = new Size(121, 35);
+            btnBorrarUsuarioxID.TabIndex = 9;
             btnBorrarUsuarioxID.Text = "Borrar Usuario";
-            btnBorrarUsuarioxID.UseVisualStyleBackColor = true;
+            btnBorrarUsuarioxID.UseVisualStyleBackColor = false;
+            btnBorrarUsuarioxID.Click += btnBorrarUsuarioxID_Click;
             // 
             // panel4
             // 
+            panel4.Controls.Add(btnLimpiarDatos);
             panel4.Controls.Add(txtEmail);
             panel4.Controls.Add(txtContrasena);
             panel4.Controls.Add(txtNombreUsuario);
@@ -95,13 +106,29 @@
             panel4.Size = new Size(650, 174);
             panel4.TabIndex = 11;
             // 
+            // btnLimpiarDatos
+            // 
+            btnLimpiarDatos.BackColor = Color.FromArgb(0, 192, 192);
+            btnLimpiarDatos.CausesValidation = false;
+            btnLimpiarDatos.FlatStyle = FlatStyle.Flat;
+            btnLimpiarDatos.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLimpiarDatos.ForeColor = SystemColors.ControlLightLight;
+            btnLimpiarDatos.Location = new Point(526, 130);
+            btnLimpiarDatos.Name = "btnLimpiarDatos";
+            btnLimpiarDatos.Size = new Size(102, 31);
+            btnLimpiarDatos.TabIndex = 10;
+            btnLimpiarDatos.Text = "Limpiar Datos";
+            btnLimpiarDatos.UseVisualStyleBackColor = false;
+            btnLimpiarDatos.Click += btnLimpiarDatos_Click;
+            // 
             // txtEmail
             // 
             txtEmail.Location = new Point(159, 130);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "eMail";
             txtEmail.Size = new Size(291, 23);
-            txtEmail.TabIndex = 0;
+            txtEmail.TabIndex = 5;
+            txtEmail.KeyDown += txtEmail_KeyDown;
             // 
             // txtContrasena
             // 
@@ -109,7 +136,8 @@
             txtContrasena.Name = "txtContrasena";
             txtContrasena.PlaceholderText = "Contraseña";
             txtContrasena.Size = new Size(245, 23);
-            txtContrasena.TabIndex = 0;
+            txtContrasena.TabIndex = 4;
+            txtContrasena.KeyDown += TextBox_KeyDown;
             // 
             // txtNombreUsuario
             // 
@@ -117,7 +145,8 @@
             txtNombreUsuario.Name = "txtNombreUsuario";
             txtNombreUsuario.PlaceholderText = "Nombre Usuario";
             txtNombreUsuario.Size = new Size(245, 23);
-            txtNombreUsuario.TabIndex = 0;
+            txtNombreUsuario.TabIndex = 3;
+            txtNombreUsuario.KeyDown += TextBox_KeyDown;
             // 
             // txtApellido
             // 
@@ -125,7 +154,8 @@
             txtApellido.Name = "txtApellido";
             txtApellido.PlaceholderText = "Apellido";
             txtApellido.Size = new Size(245, 23);
-            txtApellido.TabIndex = 0;
+            txtApellido.TabIndex = 2;
+            txtApellido.KeyDown += TextBox_KeyDown;
             // 
             // txtNombre
             // 
@@ -133,7 +163,8 @@
             txtNombre.Name = "txtNombre";
             txtNombre.PlaceholderText = "Nombre";
             txtNombre.Size = new Size(245, 23);
-            txtNombre.TabIndex = 0;
+            txtNombre.TabIndex = 1;
+            txtNombre.KeyDown += TextBox_KeyDown;
             // 
             // txtID
             // 
@@ -144,14 +175,35 @@
             txtID.TabIndex = 0;
             txtID.KeyDown += txtID_KeyDown;
             // 
+            // btnAgregarUsuario
+            // 
+            btnAgregarUsuario.BackColor = Color.Blue;
+            btnAgregarUsuario.CausesValidation = false;
+            btnAgregarUsuario.FlatStyle = FlatStyle.Flat;
+            btnAgregarUsuario.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAgregarUsuario.ForeColor = SystemColors.ControlLightLight;
+            btnAgregarUsuario.Location = new Point(200, 260);
+            btnAgregarUsuario.Name = "btnAgregarUsuario";
+            btnAgregarUsuario.Size = new Size(121, 35);
+            btnAgregarUsuario.TabIndex = 7;
+            btnAgregarUsuario.Text = "Agregar";
+            btnAgregarUsuario.UseVisualStyleBackColor = false;
+            btnAgregarUsuario.Click += btnAgregarUsuario_Click;
+            // 
             // btnActualizaUsuarioxID
             // 
-            btnActualizaUsuarioxID.Location = new Point(183, 272);
+            btnActualizaUsuarioxID.BackColor = Color.FromArgb(255, 128, 0);
+            btnActualizaUsuarioxID.CausesValidation = false;
+            btnActualizaUsuarioxID.FlatStyle = FlatStyle.Flat;
+            btnActualizaUsuarioxID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnActualizaUsuarioxID.ForeColor = SystemColors.ControlLightLight;
+            btnActualizaUsuarioxID.Location = new Point(376, 260);
             btnActualizaUsuarioxID.Name = "btnActualizaUsuarioxID";
-            btnActualizaUsuarioxID.Size = new Size(123, 23);
-            btnActualizaUsuarioxID.TabIndex = 2;
+            btnActualizaUsuarioxID.Size = new Size(121, 35);
+            btnActualizaUsuarioxID.TabIndex = 8;
             btnActualizaUsuarioxID.Text = "Actualizar Usuario";
-            btnActualizaUsuarioxID.UseVisualStyleBackColor = true;
+            btnActualizaUsuarioxID.UseVisualStyleBackColor = false;
+            btnActualizaUsuarioxID.Click += btnActualizaUsuarioxID_Click;
             // 
             // panel3
             // 
@@ -169,7 +221,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(650, 235);
             dataGridView1.TabIndex = 0;
-            dataGridView1.Visible = false;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // btnClose
             // 
@@ -183,7 +235,7 @@
             btnClose.Location = new Point(659, -2);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(39, 36);
-            btnClose.TabIndex = 8;
+            btnClose.TabIndex = 11;
             btnClose.Text = "X";
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
@@ -198,16 +250,17 @@
             btnBuscarUsuarioXiD.Location = new Point(24, 260);
             btnBuscarUsuarioXiD.Name = "btnBuscarUsuarioXiD";
             btnBuscarUsuarioXiD.Size = new Size(121, 35);
-            btnBuscarUsuarioXiD.TabIndex = 7;
+            btnBuscarUsuarioXiD.TabIndex = 6;
             btnBuscarUsuarioXiD.Text = "Buscar X ID";
             btnBuscarUsuarioXiD.UseVisualStyleBackColor = false;
+            btnBuscarUsuarioXiD.Click += btnBuscarUsuarioxID_Click;
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Century Gothic", 15F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitulo.ForeColor = Color.FromArgb(41, 128, 185);
-            lblTitulo.Location = new Point(298, 11);
+            lblTitulo.Location = new Point(253, 11);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(106, 23);
             lblTitulo.TabIndex = 0;
@@ -216,7 +269,7 @@
             // panel2
             // 
             panel2.AllowDrop = true;
-            panel2.BackColor = Color.FromArgb(41, 128, 185);
+            panel2.BackColor = Color.FromArgb(128, 64, 0);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(lblWelcome);
@@ -232,7 +285,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(142, 324);
+            label2.Location = new Point(181, 522);
             label2.Name = "label2";
             label2.Size = new Size(95, 16);
             label2.TabIndex = 1;
@@ -243,7 +296,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(129, 309);
+            label1.Location = new Point(168, 507);
             label1.Name = "label1";
             label1.Size = new Size(108, 16);
             label1.TabIndex = 1;
@@ -254,16 +307,16 @@
             lblWelcome.AutoSize = true;
             lblWelcome.Font = new Font("Century Gothic", 20F, FontStyle.Bold, GraphicsUnit.Point);
             lblWelcome.ForeColor = Color.White;
-            lblWelcome.Location = new Point(81, 170);
+            lblWelcome.Location = new Point(69, 172);
             lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(156, 32);
+            lblWelcome.Size = new Size(145, 32);
             lblWelcome.TabIndex = 1;
-            lblWelcome.Text = "Inventarios";
+            lblWelcome.Text = "USUARIOS";
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.service_provider_icon;
-            pictureBox1.Location = new Point(69, 24);
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(81, 36);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(120, 120);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -317,6 +370,8 @@
         private TextBox txtNombre;
         private TextBox txtID;
         private Button btnBuscarUsuarioXiD;
+        private Button btnAgregarUsuario;
+        private Button btnLimpiarDatos;
     }
 
      

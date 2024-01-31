@@ -61,22 +61,22 @@
             btnProductos.ForeColor = Color.White;
             btnProductos.Location = new Point(38, 28);
             btnProductos.Name = "btnProductos";
-            btnProductos.Size = new Size(170, 79);
-            btnProductos.TabIndex = 7;
+            btnProductos.Size = new Size(170, 170);
+            btnProductos.TabIndex = 1;
             btnProductos.Text = "Productos";
             btnProductos.UseVisualStyleBackColor = false;
             // 
             // btnUsuarios
             // 
-            btnUsuarios.BackColor = Color.FromArgb(192, 0, 0);
+            btnUsuarios.BackColor = Color.FromArgb(128, 64, 0);
             btnUsuarios.CausesValidation = false;
             btnUsuarios.FlatStyle = FlatStyle.Flat;
             btnUsuarios.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnUsuarios.ForeColor = Color.White;
-            btnUsuarios.Location = new Point(38, 115);
+            btnUsuarios.Location = new Point(38, 231);
             btnUsuarios.Name = "btnUsuarios";
-            btnUsuarios.Size = new Size(170, 79);
-            btnUsuarios.TabIndex = 7;
+            btnUsuarios.Size = new Size(170, 170);
+            btnUsuarios.TabIndex = 3;
             btnUsuarios.Text = "Usuarios";
             btnUsuarios.UseVisualStyleBackColor = false;
             btnUsuarios.Click += btnUsuarios_Click;
@@ -90,8 +90,8 @@
             btnVentas.ForeColor = Color.White;
             btnVentas.Location = new Point(262, 28);
             btnVentas.Name = "btnVentas";
-            btnVentas.Size = new Size(170, 79);
-            btnVentas.TabIndex = 7;
+            btnVentas.Size = new Size(170, 170);
+            btnVentas.TabIndex = 2;
             btnVentas.Text = "Ventas";
             btnVentas.UseVisualStyleBackColor = false;
             // 
@@ -102,10 +102,10 @@
             btnProductovendido.FlatStyle = FlatStyle.Flat;
             btnProductovendido.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnProductovendido.ForeColor = Color.White;
-            btnProductovendido.Location = new Point(262, 115);
+            btnProductovendido.Location = new Point(262, 230);
             btnProductovendido.Name = "btnProductovendido";
-            btnProductovendido.Size = new Size(170, 79);
-            btnProductovendido.TabIndex = 7;
+            btnProductovendido.Size = new Size(170, 170);
+            btnProductovendido.TabIndex = 4;
             btnProductovendido.Text = "Producto Vendido";
             btnProductovendido.UseVisualStyleBackColor = false;
             // 
@@ -119,7 +119,7 @@
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(300, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(700, 350);
+            panel1.Size = new Size(700, 550);
             panel1.TabIndex = 0;
             // 
             // panel3
@@ -130,7 +130,7 @@
             panel3.Controls.Add(btnProductos);
             panel3.Location = new Point(114, 59);
             panel3.Name = "panel3";
-            panel3.Size = new Size(474, 236);
+            panel3.Size = new Size(474, 415);
             panel3.TabIndex = 10;
             panel3.TabStop = true;
             // 
@@ -146,7 +146,7 @@
             btnClose.Location = new Point(659, -2);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(39, 36);
-            btnClose.TabIndex = 8;
+            btnClose.TabIndex = 5;
             btnClose.Text = "X";
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
@@ -173,7 +173,7 @@
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(288, 350);
+            panel2.Size = new Size(288, 550);
             panel2.TabIndex = 1;
             // 
             // label2
@@ -223,7 +223,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 350);
+            ClientSize = new Size(1000, 550);
             ControlBox = false;
             Controls.Add(panel2);
             Controls.Add(panel1);
