@@ -19,14 +19,18 @@
             this.stock = 0;
             this.idUsuario = 0;
         }
-        public clsProducto(int id, string descripciones, decimal costo, decimal precioVenta, int stock, int idUsuario)
+        public clsProducto(string descripciones, decimal costo, decimal precioVenta, int stock, int idUsuario)
         {
-            this.id = id;
             this.descripciones = descripciones;
             this.costo = costo;
             this.precioVenta = precioVenta;
             this.stock = stock;
             this.idUsuario = idUsuario;
+        }
+        public clsProducto(int id, string descripciones, decimal costo, decimal precioVenta, int stock, int idUsuario):
+            this(descripciones,costo,precioVenta,stock,idUsuario) 
+        {
+            this.id = id;
         }
         public int Id { get { return this.id; } set { this.id = value; } }
         public string Descripciones { get { return this.descripciones; } set { this.descripciones = value; } }

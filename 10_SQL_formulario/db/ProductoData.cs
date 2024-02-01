@@ -37,11 +37,11 @@ namespace _10_SQL_formulario.db
                 throw new Exception("Id No encontrado");
             }
         }
-        public bool AgregarpRODUCTO(modelo.clsProducto producto)
+        public bool AgregarProducto(modelo.clsProducto producto)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
-                string query = "INSERT INTO Producto (Id, Descripciones, Costo, PrecioVenta, Stock, IdUsuario)  values" +
+                string query = "INSERT INTO Producto (Descripciones, Costo, PrecioVenta, Stock, IdUsuario)  values" +
                     " (@descripciones,@costo,@precioVenta,@stock,@idUsuario)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("descripciones", producto.Descripciones);
@@ -54,7 +54,7 @@ namespace _10_SQL_formulario.db
             }
         }
 
-        public bool BorraUsuarioPorId(int id)
+        public bool BorraProductoPorId(int id)
         {
             using (SqlConnection connection = new SqlConnection(this.stringConnection))
             {
@@ -73,6 +73,7 @@ namespace _10_SQL_formulario.db
             {
                 string query = "UPDATE Producto SET  Descripciones=@descripciones,Costo=@costo,PrecioVenta=@precioVenta,Stock=@stock,IdUsuario=@idUsuario WHERE id=@id";
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("id", id);
                 command.Parameters.AddWithValue("descripciones", producto.Descripciones);
                 command.Parameters.AddWithValue("costo", producto.Costo);
                 command.Parameters.AddWithValue("precioVenta", producto.PrecioVenta);

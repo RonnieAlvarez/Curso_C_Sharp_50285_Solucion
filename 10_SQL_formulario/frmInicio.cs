@@ -36,8 +36,12 @@ namespace _10_SQL_formulario
             frmUsuarios frmUsuarios = new frmUsuarios();
             frmUsuarios.Show();
         }
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            frmProductos frmProductos = new frmProductos();
+            frmProductos.Show();
+        }
 
-   
     }
 }
 

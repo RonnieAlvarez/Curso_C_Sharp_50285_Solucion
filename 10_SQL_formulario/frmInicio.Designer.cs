@@ -65,6 +65,7 @@
             btnProductos.TabIndex = 1;
             btnProductos.Text = "Productos";
             btnProductos.UseVisualStyleBackColor = false;
+            btnProductos.Click += btnProductos_Click;
             // 
             // btnUsuarios
             // 

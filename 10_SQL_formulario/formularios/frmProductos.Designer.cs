@@ -1,6 +1,6 @@
 ﻿namespace _10_SQL_formulario.formularios
 {
-    partial class frmUsuarios
+    partial class frmProductos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarios));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductos));
             panel1 = new Panel();
-            btnBorrarUsuarioxID = new Button();
+            btnBorrarProductoxID = new Button();
             panel4 = new Panel();
             btnLimpiarDatos = new Button();
-            txtEmail = new TextBox();
-            txtContrasena = new TextBox();
-            txtNombreUsuario = new TextBox();
-            txtApellido = new TextBox();
-            txtNombre = new TextBox();
+            txtIdUsuario = new TextBox();
+            txtStock = new TextBox();
+            txtPrecioVenta = new TextBox();
+            txtCosto = new TextBox();
+            txtDescripciones = new TextBox();
             txtID = new TextBox();
-            btnAgregarUsuario = new Button();
-            btnActualizaUsuarioxID = new Button();
+            btnAgregarProducto = new Button();
+            btnActualizaProductoxID = new Button();
             panel3 = new Panel();
             dataGridView1 = new DataGridView();
             btnClose = new Button();
-            btnBuscarUsuarioXiD = new Button();
+            btnBuscarProductoXiD = new Button();
             lblTitulo = new Label();
             panel2 = new Panel();
             label2 = new Label();
@@ -63,13 +64,13 @@
             // 
             panel1.BackColor = Color.FromArgb(224, 224, 224);
             panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.Controls.Add(btnBorrarUsuarioxID);
+            panel1.Controls.Add(btnBorrarProductoxID);
             panel1.Controls.Add(panel4);
-            panel1.Controls.Add(btnAgregarUsuario);
-            panel1.Controls.Add(btnActualizaUsuarioxID);
+            panel1.Controls.Add(btnAgregarProducto);
+            panel1.Controls.Add(btnActualizaProductoxID);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(btnClose);
-            panel1.Controls.Add(btnBuscarUsuarioXiD);
+            panel1.Controls.Add(btnBuscarProductoXiD);
             panel1.Controls.Add(lblTitulo);
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(300, 0);
@@ -77,29 +78,29 @@
             panel1.Size = new Size(700, 550);
             panel1.TabIndex = 0;
             // 
-            // btnBorrarUsuarioxID
+            // btnBorrarProductoxID
             // 
-            btnBorrarUsuarioxID.BackColor = Color.Red;
-            btnBorrarUsuarioxID.CausesValidation = false;
-            btnBorrarUsuarioxID.FlatStyle = FlatStyle.Flat;
-            btnBorrarUsuarioxID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBorrarUsuarioxID.ForeColor = SystemColors.ControlLightLight;
-            btnBorrarUsuarioxID.Location = new Point(552, 260);
-            btnBorrarUsuarioxID.Name = "btnBorrarUsuarioxID";
-            btnBorrarUsuarioxID.Size = new Size(121, 35);
-            btnBorrarUsuarioxID.TabIndex = 9;
-            btnBorrarUsuarioxID.Text = "Borrar Usuario";
-            btnBorrarUsuarioxID.UseVisualStyleBackColor = false;
-            btnBorrarUsuarioxID.Click += btnBorrarUsuarioxID_Click;
+            btnBorrarProductoxID.BackColor = Color.Red;
+            btnBorrarProductoxID.CausesValidation = false;
+            btnBorrarProductoxID.FlatStyle = FlatStyle.Flat;
+            btnBorrarProductoxID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBorrarProductoxID.ForeColor = SystemColors.ControlLightLight;
+            btnBorrarProductoxID.Location = new Point(552, 260);
+            btnBorrarProductoxID.Name = "btnBorrarProductoxID";
+            btnBorrarProductoxID.Size = new Size(121, 35);
+            btnBorrarProductoxID.TabIndex = 9;
+            btnBorrarProductoxID.Text = "Borrar Producto";
+            btnBorrarProductoxID.UseVisualStyleBackColor = false;
+            btnBorrarProductoxID.Click += btnBorrarProductoxID_Click;
             // 
             // panel4
             // 
             panel4.Controls.Add(btnLimpiarDatos);
-            panel4.Controls.Add(txtEmail);
-            panel4.Controls.Add(txtContrasena);
-            panel4.Controls.Add(txtNombreUsuario);
-            panel4.Controls.Add(txtApellido);
-            panel4.Controls.Add(txtNombre);
+            panel4.Controls.Add(txtIdUsuario);
+            panel4.Controls.Add(txtStock);
+            panel4.Controls.Add(txtPrecioVenta);
+            panel4.Controls.Add(txtCosto);
+            panel4.Controls.Add(txtDescripciones);
             panel4.Controls.Add(txtID);
             panel4.Location = new Point(24, 51);
             panel4.Name = "panel4";
@@ -121,50 +122,50 @@
             btnLimpiarDatos.UseVisualStyleBackColor = false;
             btnLimpiarDatos.Click += btnLimpiarDatos_Click;
             // 
-            // txtEmail
+            // txtIdUsuario
             // 
-            txtEmail.Location = new Point(159, 130);
-            txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderText = "eMail";
-            txtEmail.Size = new Size(291, 23);
-            txtEmail.TabIndex = 5;
-            txtEmail.KeyDown += txtEmail_KeyDown;
+            txtIdUsuario.Location = new Point(326, 138);
+            txtIdUsuario.Name = "txtIdUsuario";
+            txtIdUsuario.PlaceholderText = "IdUsuario";
+            txtIdUsuario.Size = new Size(138, 23);
+            txtIdUsuario.TabIndex = 5;
+            txtIdUsuario.KeyDown += txtIdUsuario_KeyDown;
             // 
-            // txtContrasena
+            // txtStock
             // 
-            txtContrasena.Location = new Point(326, 90);
-            txtContrasena.Name = "txtContrasena";
-            txtContrasena.PlaceholderText = "Contraseña";
-            txtContrasena.Size = new Size(245, 23);
-            txtContrasena.TabIndex = 4;
-            txtContrasena.KeyDown += TextBox_KeyDown;
+            txtStock.Location = new Point(48, 138);
+            txtStock.Name = "txtStock";
+            txtStock.PlaceholderText = "Stock";
+            txtStock.Size = new Size(122, 23);
+            txtStock.TabIndex = 4;
+            txtStock.KeyDown += TextBox_KeyDown;
             // 
-            // txtNombreUsuario
+            // txtPrecioVenta
             // 
-            txtNombreUsuario.Location = new Point(48, 90);
-            txtNombreUsuario.Name = "txtNombreUsuario";
-            txtNombreUsuario.PlaceholderText = "Nombre Usuario";
-            txtNombreUsuario.Size = new Size(245, 23);
-            txtNombreUsuario.TabIndex = 3;
-            txtNombreUsuario.KeyDown += TextBox_KeyDown;
+            txtPrecioVenta.Location = new Point(326, 99);
+            txtPrecioVenta.Name = "txtPrecioVenta";
+            txtPrecioVenta.PlaceholderText = "Precio Venta";
+            txtPrecioVenta.Size = new Size(245, 23);
+            txtPrecioVenta.TabIndex = 3;
+            txtPrecioVenta.KeyDown += TextBox_KeyDown;
             // 
-            // txtApellido
+            // txtCosto
             // 
-            txtApellido.Location = new Point(326, 53);
-            txtApellido.Name = "txtApellido";
-            txtApellido.PlaceholderText = "Apellido";
-            txtApellido.Size = new Size(245, 23);
-            txtApellido.TabIndex = 2;
-            txtApellido.KeyDown += TextBox_KeyDown;
+            txtCosto.Location = new Point(48, 99);
+            txtCosto.Name = "txtCosto";
+            txtCosto.PlaceholderText = "Costo";
+            txtCosto.Size = new Size(245, 23);
+            txtCosto.TabIndex = 2;
+            txtCosto.KeyDown += TextBox_KeyDown;
             // 
-            // txtNombre
+            // txtDescripciones
             // 
-            txtNombre.Location = new Point(48, 53);
-            txtNombre.Name = "txtNombre";
-            txtNombre.PlaceholderText = "Nombre";
-            txtNombre.Size = new Size(245, 23);
-            txtNombre.TabIndex = 1;
-            txtNombre.KeyDown += TextBox_KeyDown;
+            txtDescripciones.Location = new Point(48, 53);
+            txtDescripciones.Name = "txtDescripciones";
+            txtDescripciones.PlaceholderText = "Descripciones";
+            txtDescripciones.Size = new Size(523, 23);
+            txtDescripciones.TabIndex = 1;
+            txtDescripciones.KeyDown += TextBox_KeyDown;
             // 
             // txtID
             // 
@@ -175,35 +176,35 @@
             txtID.TabIndex = 0;
             txtID.KeyDown += txtID_KeyDown;
             // 
-            // btnAgregarUsuario
+            // btnAgregarProducto
             // 
-            btnAgregarUsuario.BackColor = Color.Blue;
-            btnAgregarUsuario.CausesValidation = false;
-            btnAgregarUsuario.FlatStyle = FlatStyle.Flat;
-            btnAgregarUsuario.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAgregarUsuario.ForeColor = SystemColors.ControlLightLight;
-            btnAgregarUsuario.Location = new Point(200, 260);
-            btnAgregarUsuario.Name = "btnAgregarUsuario";
-            btnAgregarUsuario.Size = new Size(121, 35);
-            btnAgregarUsuario.TabIndex = 7;
-            btnAgregarUsuario.Text = "Agregar";
-            btnAgregarUsuario.UseVisualStyleBackColor = false;
-            btnAgregarUsuario.Click += btnAgregarUsuario_Click;
+            btnAgregarProducto.BackColor = Color.Blue;
+            btnAgregarProducto.CausesValidation = false;
+            btnAgregarProducto.FlatStyle = FlatStyle.Flat;
+            btnAgregarProducto.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAgregarProducto.ForeColor = SystemColors.ControlLightLight;
+            btnAgregarProducto.Location = new Point(200, 260);
+            btnAgregarProducto.Name = "btnAgregarProducto";
+            btnAgregarProducto.Size = new Size(121, 35);
+            btnAgregarProducto.TabIndex = 7;
+            btnAgregarProducto.Text = "Agregar";
+            btnAgregarProducto.UseVisualStyleBackColor = false;
+            btnAgregarProducto.Click += btnAgregarProducto_Click;
             // 
-            // btnActualizaUsuarioxID
+            // btnActualizaProductoxID
             // 
-            btnActualizaUsuarioxID.BackColor = Color.FromArgb(255, 128, 0);
-            btnActualizaUsuarioxID.CausesValidation = false;
-            btnActualizaUsuarioxID.FlatStyle = FlatStyle.Flat;
-            btnActualizaUsuarioxID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnActualizaUsuarioxID.ForeColor = SystemColors.ControlLightLight;
-            btnActualizaUsuarioxID.Location = new Point(376, 260);
-            btnActualizaUsuarioxID.Name = "btnActualizaUsuarioxID";
-            btnActualizaUsuarioxID.Size = new Size(121, 35);
-            btnActualizaUsuarioxID.TabIndex = 8;
-            btnActualizaUsuarioxID.Text = "Actualizar Usuario";
-            btnActualizaUsuarioxID.UseVisualStyleBackColor = false;
-            btnActualizaUsuarioxID.Click += btnActualizaUsuarioxID_Click;
+            btnActualizaProductoxID.BackColor = Color.FromArgb(255, 128, 0);
+            btnActualizaProductoxID.CausesValidation = false;
+            btnActualizaProductoxID.FlatStyle = FlatStyle.Flat;
+            btnActualizaProductoxID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnActualizaProductoxID.ForeColor = SystemColors.ControlLightLight;
+            btnActualizaProductoxID.Location = new Point(376, 260);
+            btnActualizaProductoxID.Name = "btnActualizaProductoxID";
+            btnActualizaProductoxID.Size = new Size(121, 35);
+            btnActualizaProductoxID.TabIndex = 8;
+            btnActualizaProductoxID.Text = "Actualizar Producto";
+            btnActualizaProductoxID.UseVisualStyleBackColor = false;
+            btnActualizaProductoxID.Click += btnActualizaProductoxID_Click;
             // 
             // panel3
             // 
@@ -216,6 +217,15 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
@@ -241,20 +251,20 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
-            // btnBuscarUsuarioXiD
+            // btnBuscarProductoXiD
             // 
-            btnBuscarUsuarioXiD.BackColor = Color.FromArgb(0, 192, 192);
-            btnBuscarUsuarioXiD.CausesValidation = false;
-            btnBuscarUsuarioXiD.FlatStyle = FlatStyle.Flat;
-            btnBuscarUsuarioXiD.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBuscarUsuarioXiD.ForeColor = SystemColors.ControlLightLight;
-            btnBuscarUsuarioXiD.Location = new Point(24, 260);
-            btnBuscarUsuarioXiD.Name = "btnBuscarUsuarioXiD";
-            btnBuscarUsuarioXiD.Size = new Size(121, 35);
-            btnBuscarUsuarioXiD.TabIndex = 6;
-            btnBuscarUsuarioXiD.Text = "Buscar X ID";
-            btnBuscarUsuarioXiD.UseVisualStyleBackColor = false;
-            btnBuscarUsuarioXiD.Click += btnBuscarUsuarioxID_Click;
+            btnBuscarProductoXiD.BackColor = Color.FromArgb(0, 192, 192);
+            btnBuscarProductoXiD.CausesValidation = false;
+            btnBuscarProductoXiD.FlatStyle = FlatStyle.Flat;
+            btnBuscarProductoXiD.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBuscarProductoXiD.ForeColor = SystemColors.ControlLightLight;
+            btnBuscarProductoXiD.Location = new Point(24, 260);
+            btnBuscarProductoXiD.Name = "btnBuscarProductoXiD";
+            btnBuscarProductoXiD.Size = new Size(121, 35);
+            btnBuscarProductoXiD.TabIndex = 6;
+            btnBuscarProductoXiD.Text = "Buscar X ID";
+            btnBuscarProductoXiD.UseVisualStyleBackColor = false;
+            btnBuscarProductoXiD.Click += btnBuscarProductoxID_Click;
             // 
             // lblTitulo
             // 
@@ -263,14 +273,14 @@
             lblTitulo.ForeColor = Color.FromArgb(41, 128, 185);
             lblTitulo.Location = new Point(253, 11);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(106, 23);
+            lblTitulo.Size = new Size(107, 23);
             lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "USUARIOS";
+            lblTitulo.Text = "ProductoS";
             // 
             // panel2
             // 
             panel2.AllowDrop = true;
-            panel2.BackColor = Color.FromArgb(128, 64, 0);
+            panel2.BackColor = Color.OliveDrab;
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(lblWelcome);
@@ -312,7 +322,7 @@
             lblWelcome.Name = "lblWelcome";
             lblWelcome.Size = new Size(145, 32);
             lblWelcome.TabIndex = 1;
-            lblWelcome.Text = "USUARIOS";
+            lblWelcome.Text = "ProductoS";
             // 
             // pictureBox1
             // 
@@ -324,7 +334,7 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // frmUsuarios
+            // frmProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -333,10 +343,10 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "frmUsuarios";
+            Name = "frmProductos";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Usuarios";
-            Load += frmUsuarios_Load;
+            Text = "Productos";
+            Load += frmProductos_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel4.ResumeLayout(false);
@@ -362,16 +372,16 @@
         private Panel panel3;
         private DataGridView dataGridView1;
         private Panel panel4;
-        private Button btnBorrarUsuarioxID;
-        private Button btnActualizaUsuarioxID;
-        private TextBox txtEmail;
-        private TextBox txtContrasena;
-        private TextBox txtNombreUsuario;
-        private TextBox txtApellido;
-        private TextBox txtNombre;
+        private Button btnBorrarProductoxID;
+        private Button btnActualizaProductoxID;
+        private TextBox txtIdUsuario;
+        private TextBox txtStock;
+        private TextBox txtPrecioVenta;
+        private TextBox txtCosto;
+        private TextBox txtDescripciones;
         private TextBox txtID;
-        private Button btnBuscarUsuarioXiD;
-        private Button btnAgregarUsuario;
+        private Button btnBuscarProductoXiD;
+        private Button btnAgregarProducto;
         private Button btnLimpiarDatos;
     }
 
