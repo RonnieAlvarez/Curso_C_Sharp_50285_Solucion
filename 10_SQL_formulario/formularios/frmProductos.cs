@@ -48,14 +48,21 @@ namespace _10_SQL_formulario.formularios
         }
         private void btnBuscarProductoxID_Click(object sender, EventArgs e)
         {
-            ProductoData dbProducto = new ProductoData();
-            int id = int.Parse(txtID.Text);
-            modelo.clsProducto ProductoObtenido = dbProducto.ObtenerProductoPorId(@id);
-            txtDescripciones.Text = ProductoObtenido.Descripciones.ToString();
-            txtCosto.Text = ProductoObtenido.Costo.ToString("F2");
-            txtPrecioVenta.Text = ProductoObtenido.PrecioVenta.ToString("F2");
-            txtStock.Text = ProductoObtenido.Stock.ToString();
-            txtIdUsuario.Text = ProductoObtenido.IdUsuario.ToString();
+            if (string.IsNullOrEmpty(txtID.Text))
+            {
+                MessageBox.Show($"No se permiten valores nulos.", $"Error en el valor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                ProductoData dbProducto = new ProductoData();
+                int id = int.Parse(txtID.Text);
+                modelo.clsProducto ProductoObtenido = dbProducto.ObtenerProductoPorId(@id);
+                txtDescripciones.Text = ProductoObtenido.Descripciones.ToString();
+                txtCosto.Text = ProductoObtenido.Costo.ToString("F2");
+                txtPrecioVenta.Text = ProductoObtenido.PrecioVenta.ToString("F2");
+                txtStock.Text = ProductoObtenido.Stock.ToString();
+                txtIdUsuario.Text = ProductoObtenido.IdUsuario.ToString();
+            }
         }
         private void btnBorrarProductoxID_Click(object sender, EventArgs e)
         {
@@ -111,7 +118,10 @@ namespace _10_SQL_formulario.formularios
         }
         private void TareaCompletada(string msm)
         {
-            MessageBox.Show($"La {msm} se ha completado correctamente.", $"{msm} completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (msm.Contains(" no"))
+                MessageBox.Show($"La {msm} se ha completado correctamente.", $"{msm} completada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                MessageBox.Show($"La {msm} se ha completado correctamente.", $"{msm} completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)

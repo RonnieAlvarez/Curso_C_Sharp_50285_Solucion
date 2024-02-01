@@ -28,11 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductos));
             panel1 = new Panel();
             btnBorrarProductoxID = new Button();
             panel4 = new Panel();
+            lblId = new Label();
+            lblIdUsuario = new Label();
+            lblPrecioVenta = new Label();
+            lblStock = new Label();
+            lblCosto = new Label();
+            lblDescripciones = new Label();
             btnLimpiarDatos = new Button();
             txtIdUsuario = new TextBox();
             txtStock = new TextBox();
@@ -95,6 +101,12 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(lblId);
+            panel4.Controls.Add(lblIdUsuario);
+            panel4.Controls.Add(lblPrecioVenta);
+            panel4.Controls.Add(lblStock);
+            panel4.Controls.Add(lblCosto);
+            panel4.Controls.Add(lblDescripciones);
             panel4.Controls.Add(btnLimpiarDatos);
             panel4.Controls.Add(txtIdUsuario);
             panel4.Controls.Add(txtStock);
@@ -104,8 +116,68 @@
             panel4.Controls.Add(txtID);
             panel4.Location = new Point(24, 51);
             panel4.Name = "panel4";
-            panel4.Size = new Size(650, 174);
+            panel4.Size = new Size(650, 185);
             panel4.TabIndex = 11;
+            // 
+            // lblId
+            // 
+            lblId.AutoSize = true;
+            lblId.ForeColor = SystemColors.ControlDarkDark;
+            lblId.Location = new Point(229, 17);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(17, 15);
+            lblId.TabIndex = 11;
+            lblId.Text = "Id";
+            // 
+            // lblIdUsuario
+            // 
+            lblIdUsuario.AutoSize = true;
+            lblIdUsuario.ForeColor = SystemColors.ControlDarkDark;
+            lblIdUsuario.Location = new Point(326, 131);
+            lblIdUsuario.Name = "lblIdUsuario";
+            lblIdUsuario.Size = new Size(60, 15);
+            lblIdUsuario.TabIndex = 11;
+            lblIdUsuario.Text = "Id Usuario";
+            // 
+            // lblPrecioVenta
+            // 
+            lblPrecioVenta.AutoSize = true;
+            lblPrecioVenta.ForeColor = SystemColors.ControlDarkDark;
+            lblPrecioVenta.Location = new Point(326, 81);
+            lblPrecioVenta.Name = "lblPrecioVenta";
+            lblPrecioVenta.Size = new Size(72, 15);
+            lblPrecioVenta.TabIndex = 11;
+            lblPrecioVenta.Text = "Precio Venta";
+            // 
+            // lblStock
+            // 
+            lblStock.AutoSize = true;
+            lblStock.ForeColor = SystemColors.ControlDarkDark;
+            lblStock.Location = new Point(48, 131);
+            lblStock.Name = "lblStock";
+            lblStock.Size = new Size(36, 15);
+            lblStock.TabIndex = 11;
+            lblStock.Text = "Stock";
+            // 
+            // lblCosto
+            // 
+            lblCosto.AutoSize = true;
+            lblCosto.ForeColor = SystemColors.ControlDarkDark;
+            lblCosto.Location = new Point(48, 81);
+            lblCosto.Name = "lblCosto";
+            lblCosto.Size = new Size(38, 15);
+            lblCosto.TabIndex = 11;
+            lblCosto.Text = "Costo";
+            // 
+            // lblDescripciones
+            // 
+            lblDescripciones.AutoSize = true;
+            lblDescripciones.ForeColor = SystemColors.ControlDarkDark;
+            lblDescripciones.Location = new Point(48, 35);
+            lblDescripciones.Name = "lblDescripciones";
+            lblDescripciones.Size = new Size(80, 15);
+            lblDescripciones.TabIndex = 11;
+            lblDescripciones.Text = "Descripciones";
             // 
             // btnLimpiarDatos
             // 
@@ -114,7 +186,7 @@
             btnLimpiarDatos.FlatStyle = FlatStyle.Flat;
             btnLimpiarDatos.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnLimpiarDatos.ForeColor = SystemColors.ControlLightLight;
-            btnLimpiarDatos.Location = new Point(526, 130);
+            btnLimpiarDatos.Location = new Point(528, 142);
             btnLimpiarDatos.Name = "btnLimpiarDatos";
             btnLimpiarDatos.Size = new Size(102, 31);
             btnLimpiarDatos.TabIndex = 10;
@@ -124,18 +196,16 @@
             // 
             // txtIdUsuario
             // 
-            txtIdUsuario.Location = new Point(326, 138);
+            txtIdUsuario.Location = new Point(326, 149);
             txtIdUsuario.Name = "txtIdUsuario";
-            txtIdUsuario.PlaceholderText = "IdUsuario";
             txtIdUsuario.Size = new Size(138, 23);
             txtIdUsuario.TabIndex = 5;
             txtIdUsuario.KeyDown += txtIdUsuario_KeyDown;
             // 
             // txtStock
             // 
-            txtStock.Location = new Point(48, 138);
+            txtStock.Location = new Point(48, 149);
             txtStock.Name = "txtStock";
-            txtStock.PlaceholderText = "Stock";
             txtStock.Size = new Size(122, 23);
             txtStock.TabIndex = 4;
             txtStock.KeyDown += TextBox_KeyDown;
@@ -144,7 +214,6 @@
             // 
             txtPrecioVenta.Location = new Point(326, 99);
             txtPrecioVenta.Name = "txtPrecioVenta";
-            txtPrecioVenta.PlaceholderText = "Precio Venta";
             txtPrecioVenta.Size = new Size(245, 23);
             txtPrecioVenta.TabIndex = 3;
             txtPrecioVenta.KeyDown += TextBox_KeyDown;
@@ -153,7 +222,6 @@
             // 
             txtCosto.Location = new Point(48, 99);
             txtCosto.Name = "txtCosto";
-            txtCosto.PlaceholderText = "Costo";
             txtCosto.Size = new Size(245, 23);
             txtCosto.TabIndex = 2;
             txtCosto.KeyDown += TextBox_KeyDown;
@@ -162,7 +230,6 @@
             // 
             txtDescripciones.Location = new Point(48, 53);
             txtDescripciones.Name = "txtDescripciones";
-            txtDescripciones.PlaceholderText = "Descripciones";
             txtDescripciones.Size = new Size(523, 23);
             txtDescripciones.TabIndex = 1;
             txtDescripciones.KeyDown += TextBox_KeyDown;
@@ -171,14 +238,13 @@
             // 
             txtID.Location = new Point(258, 14);
             txtID.Name = "txtID";
-            txtID.PlaceholderText = "Id";
             txtID.Size = new Size(100, 23);
             txtID.TabIndex = 0;
             txtID.KeyDown += txtID_KeyDown;
             // 
             // btnAgregarProducto
             // 
-            btnAgregarProducto.BackColor = Color.Blue;
+            btnAgregarProducto.BackColor = Color.RoyalBlue;
             btnAgregarProducto.CausesValidation = false;
             btnAgregarProducto.FlatStyle = FlatStyle.Flat;
             btnAgregarProducto.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -217,15 +283,15 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
@@ -273,9 +339,9 @@
             lblTitulo.ForeColor = Color.FromArgb(41, 128, 185);
             lblTitulo.Location = new Point(253, 11);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(107, 23);
+            lblTitulo.Size = new Size(106, 23);
             lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "ProductoS";
+            lblTitulo.Text = "Productos";
             // 
             // panel2
             // 
@@ -383,6 +449,12 @@
         private Button btnBuscarProductoXiD;
         private Button btnAgregarProducto;
         private Button btnLimpiarDatos;
+        private Label lblId;
+        private Label lblIdUsuario;
+        private Label lblPrecioVenta;
+        private Label lblStock;
+        private Label lblCosto;
+        private Label lblDescripciones;
     }
 
      

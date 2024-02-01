@@ -46,14 +46,21 @@ namespace _10_SQL_formulario.formularios
         }
         private void btnBuscarUsuarioxID_Click(object sender, EventArgs e)
         {
-            UsuarioData dbUsuario = new UsuarioData();
-            int id = int.Parse(txtID.Text);
-            modelo.clsUsuario usuarioObtenido = dbUsuario.ObtenerUsuarioPorId(@id);
-            txtNombre.Text = usuarioObtenido.Nombre.ToString();
-            txtApellido.Text = usuarioObtenido.Apellido.ToString();
-            txtNombreUsuario.Text = usuarioObtenido.NombreUsuario.ToString();
-            txtContrasena.Text = usuarioObtenido.Password.ToString();
-            txtEmail.Text = usuarioObtenido.Email;
+            if (string.IsNullOrEmpty(txtID.Text))
+            {
+                MessageBox.Show($"No se permiten valores nulos.", $"Error en el valor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                UsuarioData dbUsuario = new UsuarioData();
+                int id = int.Parse(txtID.Text);
+                modelo.clsUsuario usuarioObtenido = dbUsuario.ObtenerUsuarioPorId(@id);
+                txtNombre.Text = usuarioObtenido.Nombre.ToString();
+                txtApellido.Text = usuarioObtenido.Apellido.ToString();
+                txtNombreUsuario.Text = usuarioObtenido.NombreUsuario.ToString();
+                txtContrasena.Text = usuarioObtenido.Password.ToString();
+                txtEmail.Text = usuarioObtenido.Email;
+            }
         }
         private void btnBorrarUsuarioxID_Click(object sender, EventArgs e)
         {
@@ -109,7 +116,10 @@ namespace _10_SQL_formulario.formularios
         }
         private void TareaCompletada(string msm)
         {
-            MessageBox.Show($"La {msm} se ha completado correctamente.", $"{msm} completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (msm.Contains(" no"))
+                MessageBox.Show($"La {msm} se ha completado correctamente.", $"{msm} completada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                MessageBox.Show($"La {msm} se ha completado correctamente.", $"{msm} completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)

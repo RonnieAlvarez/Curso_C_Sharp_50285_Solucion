@@ -32,6 +32,12 @@
             panel1 = new Panel();
             btnBorrarUsuarioxID = new Button();
             panel4 = new Panel();
+            lblEmail = new Label();
+            lblPassword = new Label();
+            lblApellido = new Label();
+            lblNombreUsuario = new Label();
+            lblNombre = new Label();
+            lblId = new Label();
             btnLimpiarDatos = new Button();
             txtEmail = new TextBox();
             txtContrasena = new TextBox();
@@ -94,6 +100,12 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(lblEmail);
+            panel4.Controls.Add(lblPassword);
+            panel4.Controls.Add(lblApellido);
+            panel4.Controls.Add(lblNombreUsuario);
+            panel4.Controls.Add(lblNombre);
+            panel4.Controls.Add(lblId);
             panel4.Controls.Add(btnLimpiarDatos);
             panel4.Controls.Add(txtEmail);
             panel4.Controls.Add(txtContrasena);
@@ -103,8 +115,68 @@
             panel4.Controls.Add(txtID);
             panel4.Location = new Point(24, 51);
             panel4.Name = "panel4";
-            panel4.Size = new Size(650, 174);
+            panel4.Size = new Size(650, 190);
             panel4.TabIndex = 11;
+            // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.ForeColor = SystemColors.ControlDarkDark;
+            lblEmail.Location = new Point(160, 132);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(36, 15);
+            lblEmail.TabIndex = 11;
+            lblEmail.Text = "eMail";
+            // 
+            // lblPassword
+            // 
+            lblPassword.AutoSize = true;
+            lblPassword.ForeColor = SystemColors.ControlDarkDark;
+            lblPassword.Location = new Point(326, 88);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(67, 15);
+            lblPassword.TabIndex = 11;
+            lblPassword.Text = "Contraseña";
+            // 
+            // lblApellido
+            // 
+            lblApellido.AutoSize = true;
+            lblApellido.ForeColor = SystemColors.ControlDarkDark;
+            lblApellido.Location = new Point(326, 40);
+            lblApellido.Name = "lblApellido";
+            lblApellido.Size = new Size(51, 15);
+            lblApellido.TabIndex = 11;
+            lblApellido.Text = "Apellido";
+            // 
+            // lblNombreUsuario
+            // 
+            lblNombreUsuario.AutoSize = true;
+            lblNombreUsuario.ForeColor = SystemColors.ControlDarkDark;
+            lblNombreUsuario.Location = new Point(49, 88);
+            lblNombreUsuario.Name = "lblNombreUsuario";
+            lblNombreUsuario.Size = new Size(94, 15);
+            lblNombreUsuario.TabIndex = 11;
+            lblNombreUsuario.Text = "Nombre Usuario";
+            // 
+            // lblNombre
+            // 
+            lblNombre.AutoSize = true;
+            lblNombre.ForeColor = SystemColors.ControlDarkDark;
+            lblNombre.Location = new Point(48, 35);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(51, 15);
+            lblNombre.TabIndex = 11;
+            lblNombre.Text = "Nombre";
+            // 
+            // lblId
+            // 
+            lblId.AutoSize = true;
+            lblId.ForeColor = SystemColors.ControlDarkDark;
+            lblId.Location = new Point(235, 17);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(17, 15);
+            lblId.TabIndex = 11;
+            lblId.Text = "Id";
             // 
             // btnLimpiarDatos
             // 
@@ -113,7 +185,7 @@
             btnLimpiarDatos.FlatStyle = FlatStyle.Flat;
             btnLimpiarDatos.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnLimpiarDatos.ForeColor = SystemColors.ControlLightLight;
-            btnLimpiarDatos.Location = new Point(526, 130);
+            btnLimpiarDatos.Location = new Point(527, 143);
             btnLimpiarDatos.Name = "btnLimpiarDatos";
             btnLimpiarDatos.Size = new Size(102, 31);
             btnLimpiarDatos.TabIndex = 10;
@@ -123,27 +195,24 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(159, 130);
+            txtEmail.Location = new Point(160, 150);
             txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderText = "eMail";
             txtEmail.Size = new Size(291, 23);
             txtEmail.TabIndex = 5;
             txtEmail.KeyDown += txtEmail_KeyDown;
             // 
             // txtContrasena
             // 
-            txtContrasena.Location = new Point(326, 90);
+            txtContrasena.Location = new Point(327, 103);
             txtContrasena.Name = "txtContrasena";
-            txtContrasena.PlaceholderText = "Contraseña";
             txtContrasena.Size = new Size(245, 23);
             txtContrasena.TabIndex = 4;
             txtContrasena.KeyDown += TextBox_KeyDown;
             // 
             // txtNombreUsuario
             // 
-            txtNombreUsuario.Location = new Point(48, 90);
+            txtNombreUsuario.Location = new Point(49, 103);
             txtNombreUsuario.Name = "txtNombreUsuario";
-            txtNombreUsuario.PlaceholderText = "Nombre Usuario";
             txtNombreUsuario.Size = new Size(245, 23);
             txtNombreUsuario.TabIndex = 3;
             txtNombreUsuario.KeyDown += TextBox_KeyDown;
@@ -152,7 +221,6 @@
             // 
             txtApellido.Location = new Point(326, 53);
             txtApellido.Name = "txtApellido";
-            txtApellido.PlaceholderText = "Apellido";
             txtApellido.Size = new Size(245, 23);
             txtApellido.TabIndex = 2;
             txtApellido.KeyDown += TextBox_KeyDown;
@@ -161,7 +229,6 @@
             // 
             txtNombre.Location = new Point(48, 53);
             txtNombre.Name = "txtNombre";
-            txtNombre.PlaceholderText = "Nombre";
             txtNombre.Size = new Size(245, 23);
             txtNombre.TabIndex = 1;
             txtNombre.KeyDown += TextBox_KeyDown;
@@ -170,14 +237,13 @@
             // 
             txtID.Location = new Point(258, 14);
             txtID.Name = "txtID";
-            txtID.PlaceholderText = "Id";
             txtID.Size = new Size(100, 23);
             txtID.TabIndex = 0;
             txtID.KeyDown += txtID_KeyDown;
             // 
             // btnAgregarUsuario
             // 
-            btnAgregarUsuario.BackColor = Color.Blue;
+            btnAgregarUsuario.BackColor = Color.RoyalBlue;
             btnAgregarUsuario.CausesValidation = false;
             btnAgregarUsuario.FlatStyle = FlatStyle.Flat;
             btnAgregarUsuario.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -373,6 +439,12 @@
         private Button btnBuscarUsuarioXiD;
         private Button btnAgregarUsuario;
         private Button btnLimpiarDatos;
+        private Label lblPassword;
+        private Label lblApellido;
+        private Label lblNombreUsuario;
+        private Label lblNombre;
+        private Label lblId;
+        private Label lblEmail;
     }
 
      
