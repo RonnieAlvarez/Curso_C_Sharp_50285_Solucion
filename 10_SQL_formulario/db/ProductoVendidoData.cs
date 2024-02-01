@@ -37,17 +37,17 @@ namespace _10_SQL_formulario.db
         }
         public bool AgregarProductoVendido(modelo.clsProductoVendido productoVendido)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
-            {
-                string query = "INSERT INTO productoVendido (stock, idProducto, idVenta)  values" +
-                    " (@stock, @idProducto, @idVenta)";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("stock",productoVendido.Stock);
-                command.Parameters.AddWithValue("idProducto", productoVendido.IdProducto);
-                command.Parameters.AddWithValue("idVenta", productoVendido.IdVenta);
-                connection.Open();
-                return command.ExecuteNonQuery() > 0;
-            }
+                using (SqlConnection connection = new SqlConnection(this.stringConnection))
+                {
+                    string query = "INSERT INTO ProductoVendido (stock, idProducto, idVenta)  values" +
+                        " (@stock, @idProducto, @idVenta)";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("stock", Convert.ToInt32(productoVendido.Stock));
+                    command.Parameters.AddWithValue("idProducto", Convert.ToInt32(productoVendido.IdProducto));
+                    command.Parameters.AddWithValue("idVenta", Convert.ToInt32(productoVendido.IdVenta));
+                    connection.Open();
+                    return command.ExecuteNonQuery() > 0;
+                }
         }
 
         public bool BorraProductoVendidoPorId(int id)

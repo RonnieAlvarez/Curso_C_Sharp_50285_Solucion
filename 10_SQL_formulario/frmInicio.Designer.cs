@@ -109,6 +109,7 @@
             btnProductovendido.TabIndex = 4;
             btnProductovendido.Text = "Producto Vendido";
             btnProductovendido.UseVisualStyleBackColor = false;
+            btnProductovendido.Click += btnProductovendido_Click;
             // 
             // panel1
             // 

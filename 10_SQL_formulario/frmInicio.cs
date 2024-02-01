@@ -10,7 +10,7 @@ namespace _10_SQL_formulario
             InitializeComponent();
         }
 
-   
+
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return)
@@ -42,6 +42,11 @@ namespace _10_SQL_formulario
             frmProductos.Show();
         }
 
+        private void btnProductovendido_Click(object sender, EventArgs e)
+        {
+            frmProductoVendido frmProductoVendido = new frmProductoVendido();
+            frmProductoVendido.Show();
+        }
     }
 }
 
