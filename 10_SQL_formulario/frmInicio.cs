@@ -47,6 +47,12 @@ namespace _10_SQL_formulario
             frmProductoVendido frmProductoVendido = new frmProductoVendido();
             frmProductoVendido.Show();
         }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            frmVenta frmVenta = new frmVenta();
+            frmVenta.Show();
+        }
     }
 }
 

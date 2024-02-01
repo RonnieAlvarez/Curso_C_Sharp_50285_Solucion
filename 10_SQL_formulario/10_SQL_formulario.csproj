@@ -14,6 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="formularios\frmVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="formularios\frmProductoVendido.cs">
       <SubType>Form</SubType>
     </Compile>
