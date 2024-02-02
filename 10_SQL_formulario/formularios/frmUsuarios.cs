@@ -24,11 +24,17 @@ namespace _10_SQL_formulario.formularios
         }
         public void obtenerDatos()
         {
-            dataGridView1.DataSource = null;
-            UsuarioData dbUsuario = new UsuarioData();
-            List<modelo.clsUsuario> lstUsuarios = dbUsuario.ListarUsuarios();
-            dataGridView1.DataSource = lstUsuarios;
-            dataGridView1.AutoGenerateColumns = true;
+            try
+            {
+                dataGridView1.DataSource = null;
+                List<modelo.clsUsuario> lstUsuarios = UsuarioData.ListarUsuarios();
+                dataGridView1.DataSource = lstUsuarios;
+                dataGridView1.AutoGenerateColumns = true;
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -46,38 +52,50 @@ namespace _10_SQL_formulario.formularios
         }
         private void btnBuscarUsuarioxID_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtID.Text))
+            try
             {
-                MessageBox.Show($"No se permiten valores nulos.", $"Error en el valor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (string.IsNullOrEmpty(txtID.Text))
+                {
+                    MessageBox.Show($"No se permiten valores nulos.", $"Error en el valor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    int id = int.Parse(txtID.Text);
+                    modelo.clsUsuario usuarioObtenido = UsuarioData.ObtenerUsuarioPorId(@id);
+                    txtNombre.Text = usuarioObtenido.Nombre.ToString();
+                    txtApellido.Text = usuarioObtenido.Apellido.ToString();
+                    txtNombreUsuario.Text = usuarioObtenido.NombreUsuario.ToString();
+                    txtContrasena.Text = usuarioObtenido.Password.ToString();
+                    txtEmail.Text = usuarioObtenido.Email;
+                }
             }
-            else
+            catch
             {
-                UsuarioData dbUsuario = new UsuarioData();
-                int id = int.Parse(txtID.Text);
-                modelo.clsUsuario usuarioObtenido = dbUsuario.ObtenerUsuarioPorId(@id);
-                txtNombre.Text = usuarioObtenido.Nombre.ToString();
-                txtApellido.Text = usuarioObtenido.Apellido.ToString();
-                txtNombreUsuario.Text = usuarioObtenido.NombreUsuario.ToString();
-                txtContrasena.Text = usuarioObtenido.Password.ToString();
-                txtEmail.Text = usuarioObtenido.Email;
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void btnBorrarUsuarioxID_Click(object sender, EventArgs e)
         {
-            DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?", "Confirmación de borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirmacion == DialogResult.Yes)
+            try
             {
-                UsuarioData dbUsuario = new UsuarioData();
-                int id = int.Parse(txtID.Text);
-
-                if (dbUsuario.BorraUsuarioPorId(@id))
+                DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?", "Confirmación de borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmacion == DialogResult.Yes)
                 {
-                    limpiarDatos();
-                    obtenerDatos();
-                    txtID.Enabled = true;
-                    TareaCompletada("eliminación");
+                    int id = int.Parse(txtID.Text);
+
+                    if (UsuarioData.BorraUsuarioPorId(@id))
+                    {
+                        limpiarDatos();
+                        obtenerDatos();
+                        txtID.Enabled = true;
+                        TareaCompletada("eliminación");
+                    }
+                    else TareaCompletada("eliminación no");
                 }
-                else TareaCompletada("eliminación no");
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void limpiarDatos()
@@ -92,26 +110,33 @@ namespace _10_SQL_formulario.formularios
         }
         private void btnActualizaUsuarioxID_Click(object sender, EventArgs e)
         {
-            DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas Actualizar este registro?", "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirmacion == DialogResult.Yes)
+            try
             {
-                int id = int.Parse(txtID.Text);
-                UsuarioData dbUsuario = new UsuarioData();
-                modelo.clsUsuario usuarioActualizar = new(
-                   txtNombre.Text,
-                   txtApellido.Text,
-                   txtNombreUsuario.Text,
-                   txtContrasena.Text,
-                   txtEmail.Text
-                );
-                if (dbUsuario.UpdateUsuarioPorId(@id, usuarioActualizar))
+                DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas Actualizar este registro?", "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmacion == DialogResult.Yes)
                 {
-                    obtenerDatos();
-                    limpiarDatos();
-                    TareaCompletada("actualización");
+                    int id = int.Parse(txtID.Text);
+
+                    modelo.clsUsuario usuarioActualizar = new(
+                       txtNombre.Text,
+                       txtApellido.Text,
+                       txtNombreUsuario.Text,
+                       txtContrasena.Text,
+                       txtEmail.Text
+                    );
+                    if (UsuarioData.UpdateUsuarioPorId(@id, usuarioActualizar))
+                    {
+                        obtenerDatos();
+                        limpiarDatos();
+                        TareaCompletada("actualización");
+                    }
+                    else TareaCompletada("actualización no");
                 }
-                else TareaCompletada("actualización no");
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void TareaCompletada(string msm)
@@ -146,7 +171,6 @@ namespace _10_SQL_formulario.formularios
 
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            UsuarioData dbUsuario = new UsuarioData();
             modelo.clsUsuario usuarioNuevo = new(
                txtNombre.Text,
                txtApellido.Text,
@@ -154,7 +178,7 @@ namespace _10_SQL_formulario.formularios
                txtContrasena.Text,
                txtEmail.Text
             );
-            if (dbUsuario.AgregarUsuario(usuarioNuevo))
+            if (UsuarioData.AgregarUsuario(usuarioNuevo))
             {
                 obtenerDatos();
                 limpiarDatos();

@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace _10_SQL_formulario.db
 {
-    internal class VentaData
+     class VentaData
     {
-        private string stringConnection;
+        private static string stringConnection;
 
-        public VentaData()
+        static VentaData()
         {
-            this.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
+            VentaData.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
         }
-        public modelo.clsVenta ObtenerVentaPorId(int id)
+        public static modelo.clsVenta ObtenerVentaPorId(int id)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(VentaData.stringConnection))
             {
                 string query = "SELECT * FROM Venta WHERE id = @id";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -39,9 +39,9 @@ namespace _10_SQL_formulario.db
                 throw new Exception("Id No encontrado");
             }
         }
-        public bool AgregarVenta(modelo.clsVenta venta)
+        public static bool AgregarVenta(modelo.clsVenta venta)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(VentaData.stringConnection))
             {
                 string query = "INSERT INTO Venta (comentarios,idUsuario)  values" +
                     " (@comentarios,@idUsuario)";
@@ -54,9 +54,9 @@ namespace _10_SQL_formulario.db
             }
         }
 
-        public bool BorraVentaPorId(int id)
+        public static bool BorraVentaPorId(int id)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(VentaData.stringConnection))
             {
                 string query = "DELETE FROM Venta WHERE id= @id";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -67,9 +67,9 @@ namespace _10_SQL_formulario.db
             throw new Exception(message: "Venta no encontrada");
         }
 
-        public bool UpdateVentaPorId(int id, modelo.clsVenta venta)
+        public static bool UpdateVentaPorId(int id, modelo.clsVenta venta)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(VentaData.stringConnection))
             {
                 string query = "UPDATE Venta SET  Comentarios=@comentarios,IdUsuario=@idUsuario WHERE id=@id";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -82,10 +82,10 @@ namespace _10_SQL_formulario.db
             }
             throw new Exception(message: "Venta Actualizada");
         }
-        public List<modelo.clsVenta> ListarVentas()
+        public static List<modelo.clsVenta> ListarVentas()
         {
             List<modelo.clsVenta> lstVentas = new List<modelo.clsVenta>();
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(VentaData.stringConnection))
             {
                 string query = "SELECT * FROM Venta";
                 SqlCommand command = new SqlCommand(query, connection);

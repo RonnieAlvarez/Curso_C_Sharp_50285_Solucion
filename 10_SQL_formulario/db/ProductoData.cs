@@ -4,17 +4,17 @@ using System.Data.SqlClient;
 
 namespace _10_SQL_formulario.db
 {
-    internal class ProductoData
+   class ProductoData
     {
-        private string stringConnection;
+        private static string stringConnection;
 
-        public ProductoData()
+        static ProductoData()
         {
-            this.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
+            ProductoData.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
         }
-        public modelo.clsProducto ObtenerProductoPorId(int id)
+        public static modelo.clsProducto ObtenerProductoPorId(int id)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(ProductoData.stringConnection))
             {
                 string query = "SELECT * FROM Producto WHERE id = @id";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -37,9 +37,9 @@ namespace _10_SQL_formulario.db
                 throw new Exception("Id No encontrado");
             }
         }
-        public bool AgregarProducto(modelo.clsProducto producto)
+        public static bool AgregarProducto(modelo.clsProducto producto)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(ProductoData.stringConnection))
             {
                 string query = "INSERT INTO Producto (Descripciones, Costo, PrecioVenta, Stock, IdUsuario)  values" +
                     " (@descripciones,@costo,@precioVenta,@stock,@idUsuario)";
@@ -54,9 +54,9 @@ namespace _10_SQL_formulario.db
             }
         }
 
-        public bool BorraProductoPorId(int id)
+        public static bool BorraProductoPorId(int id)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(ProductoData.stringConnection))
             {
                 string query = "DELETE FROM Producto WHERE id= @id";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -67,9 +67,9 @@ namespace _10_SQL_formulario.db
             throw new Exception(message: "Producto no encontrado");
         }
 
-        public bool UpdateProductoPorId(int id, modelo.clsProducto producto)
+        public static bool UpdateProductoPorId(int id, modelo.clsProducto producto)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(ProductoData.stringConnection))
             {
                 string query = "UPDATE Producto SET  Descripciones=@descripciones,Costo=@costo,PrecioVenta=@precioVenta,Stock=@stock,IdUsuario=@idUsuario WHERE id=@id";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -84,10 +84,10 @@ namespace _10_SQL_formulario.db
             }
             throw new Exception(message: "Producto Actualizado");
         }
-        public List<modelo.clsProducto> ListarProductos()
+        public static List<modelo.clsProducto> ListarProductos()
         {
             List<modelo.clsProducto> productos = new List<modelo.clsProducto>();
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(ProductoData.stringConnection))
             {
                 string query = "SELECT * FROM Producto";
                 SqlCommand command = new SqlCommand(query, connection);

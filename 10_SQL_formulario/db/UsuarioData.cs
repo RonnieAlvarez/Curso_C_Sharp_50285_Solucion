@@ -3,17 +3,17 @@ using System.Windows.Forms;
 
 namespace _10_SQL_formulario.db
 {
-    internal class UsuarioData
+    class UsuarioData
     {
-        private string stringConnection;
+        private static string stringConnection;
 
-        public UsuarioData()
+        static UsuarioData()
         {
-            this.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
+            UsuarioData.stringConnection = @"Server=localhost;Database=coderhouse;Trusted_Connection=True;";
         }
-          public modelo.clsUsuario ObtenerUsuarioPorId(int id)
+          public static modelo.clsUsuario ObtenerUsuarioPorId(int id)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(UsuarioData.stringConnection))
             {
                 string query = "SELECT * FROM Usuario WHERE id = @id";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -36,9 +36,9 @@ namespace _10_SQL_formulario.db
                 throw new Exception("Id No encontrado");
             }
         }
-        public bool AgregarUsuario(modelo.clsUsuario usuario)
+        public static bool AgregarUsuario(modelo.clsUsuario usuario)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(UsuarioData.stringConnection))
             {
                 string query = "INSERT INTO Usuario (Nombre,Apellido,NombreUsuario,Contraseña,Mail)  values" +
                     " (@nombre,@apellido,@nombreUsuario,@password,@eMail)";
@@ -53,9 +53,9 @@ namespace _10_SQL_formulario.db
             }
         }
 
-        public bool BorraUsuarioPorId(int id)
+        public static bool BorraUsuarioPorId(int id)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(UsuarioData.stringConnection))
             {
                 string query = "DELETE FROM Usuario WHERE id= @id";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -66,9 +66,9 @@ namespace _10_SQL_formulario.db
             throw new Exception(message: "Usuario no encontrado");
         }
 
-        public bool UpdateUsuarioPorId(int id, modelo.clsUsuario usuario)
+        public static bool UpdateUsuarioPorId(int id, modelo.clsUsuario usuario)
         {
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(UsuarioData.stringConnection))
             {
                 string query = "UPDATE Usuario SET  Nombre=@nombre,Apellido=@apellido,NombreUsuario=@nombreUsuario,Contraseña=@password,Mail=@email WHERE id=@id";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -83,10 +83,10 @@ namespace _10_SQL_formulario.db
             }
             throw new Exception(message: "Usuario Actualizado");
         }
-        public List<modelo.clsUsuario> ListarUsuarios()
+        public static List<modelo.clsUsuario> ListarUsuarios()
         {
             List<modelo.clsUsuario> usuarios = new List<modelo.clsUsuario>();
-            using (SqlConnection connection = new SqlConnection(this.stringConnection))
+            using (SqlConnection connection = new SqlConnection(UsuarioData.stringConnection))
             {
                 string query = "SELECT * FROM Usuario";
                 SqlCommand command = new SqlCommand(query, connection);

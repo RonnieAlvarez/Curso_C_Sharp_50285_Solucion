@@ -24,11 +24,17 @@ namespace _10_SQL_formulario.formularios
         }
         public void obtenerDatos()
         {
-            dataGridView1.DataSource = null;
-            ProductoVendidoData dbProducto = new ProductoVendidoData();
-            List<modelo.clsProductoVendido> lstProductos = dbProducto.ListarProductoVendido();
-            dataGridView1.DataSource = lstProductos;
-            dataGridView1.AutoGenerateColumns = true;
+            try
+            {
+                dataGridView1.DataSource = null;
+                List<modelo.clsProductoVendido> lstProductos = ProductoVendidoData.ListarProductoVendido();
+                dataGridView1.DataSource = lstProductos;
+                dataGridView1.AutoGenerateColumns = true;
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -46,36 +52,48 @@ namespace _10_SQL_formulario.formularios
         }
         private void btnBuscarProductoxID_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtID.Text))
+            try
             {
-                MessageBox.Show($"No se permiten valores nulos.", $"Error en el valor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (string.IsNullOrEmpty(txtID.Text))
+                {
+                    MessageBox.Show($"No se permiten valores nulos.", $"Error en el valor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    int id = int.Parse(txtID.Text);
+                    modelo.clsProductoVendido ProductoObtenido = ProductoVendidoData.ObtenerProductoVendidoPorId(@id);
+                    txtStock.Text = ProductoObtenido.Stock.ToString();
+                    txtIdProducto.Text = ProductoObtenido.IdProducto.ToString();
+                    txtIdVenta.Text = ProductoObtenido.IdVenta.ToString();
+                }
             }
-            else
+            catch
             {
-                ProductoVendidoData dbProducto = new ProductoVendidoData();
-                int id = int.Parse(txtID.Text);
-                modelo.clsProductoVendido ProductoObtenido = dbProducto.ObtenerProductoVendidoPorId(@id);
-                txtStock.Text = ProductoObtenido.Stock.ToString();
-                txtIdProducto.Text = ProductoObtenido.IdProducto.ToString();
-                txtIdVenta.Text = ProductoObtenido.IdVenta.ToString();
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void btnBorrarProductoxID_Click(object sender, EventArgs e)
         {
-            DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?", "Confirmación de borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirmacion == DialogResult.Yes)
+            try
             {
-                ProductoVendidoData dbProducto = new ProductoVendidoData();
-                int id = int.Parse(txtID.Text);
-
-                if (dbProducto.BorraProductoVendidoPorId(@id))
+                DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?", "Confirmación de borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmacion == DialogResult.Yes)
                 {
-                    limpiarDatos();
-                    obtenerDatos();
-                    txtID.Enabled = true;
-                    TareaCompletada("eliminación");
+                    int id = int.Parse(txtID.Text);
+
+                    if (ProductoVendidoData.BorraProductoVendidoPorId(@id))
+                    {
+                        limpiarDatos();
+                        obtenerDatos();
+                        txtID.Enabled = true;
+                        TareaCompletada("eliminación");
+                    }
+                    else TareaCompletada("eliminación no");
                 }
-                else TareaCompletada("eliminación no");
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void limpiarDatos()
@@ -87,24 +105,30 @@ namespace _10_SQL_formulario.formularios
         }
         private void btnActualizaProductoxID_Click(object sender, EventArgs e)
         {
-            DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas Actualizar este registro?", "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirmacion == DialogResult.Yes)
+            try
             {
-                int id = int.Parse(txtID.Text);
-                ProductoVendidoData dbProducto = new ProductoVendidoData();
-                modelo.clsProductoVendido ProductoActualizar = new(
-                   int.Parse(txtStock.Text),
-                   int.Parse(txtIdProducto.Text),
-                   int.Parse(txtIdVenta.Text)
-                );
-                if (dbProducto.UpdateProductoVendidoPorId(@id, ProductoActualizar))
+                DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas Actualizar este registro?", "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmacion == DialogResult.Yes)
                 {
-                    obtenerDatos();
-                    limpiarDatos();
-                    TareaCompletada("actualización");
+                    int id = int.Parse(txtID.Text);
+                    modelo.clsProductoVendido ProductoActualizar = new(
+                       int.Parse(txtStock.Text),
+                       int.Parse(txtIdProducto.Text),
+                       int.Parse(txtIdVenta.Text)
+                    );
+                    if (ProductoVendidoData.UpdateProductoVendidoPorId(@id, ProductoActualizar))
+                    {
+                        obtenerDatos();
+                        limpiarDatos();
+                        TareaCompletada("actualización");
+                    }
+                    else TareaCompletada("actualización no");
                 }
-                else TareaCompletada("actualización no");
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void TareaCompletada(string msm)
@@ -126,31 +150,44 @@ namespace _10_SQL_formulario.formularios
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            limpiarDatos();
-            txtID.Enabled = true;
-            int fila = e.RowIndex;
-            txtID.Text = dataGridView1.Rows[fila].Cells[0].Value.ToString();
-            txtStock.Text = dataGridView1.Rows[fila].Cells[1].Value.ToString();
-            txtIdProducto.Text = dataGridView1.Rows[fila].Cells[2].Value.ToString();
-            txtIdVenta.Text = dataGridView1.Rows[fila].Cells[3].Value.ToString();
+            try
+            {
+                limpiarDatos();
+                txtID.Enabled = true;
+                int fila = e.RowIndex;
+                txtID.Text = dataGridView1.Rows[fila].Cells[0].Value.ToString();
+                txtStock.Text = dataGridView1.Rows[fila].Cells[1].Value.ToString();
+                txtIdProducto.Text = dataGridView1.Rows[fila].Cells[2].Value.ToString();
+                txtIdVenta.Text = dataGridView1.Rows[fila].Cells[3].Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            ProductoVendidoData dbProducto = new ProductoVendidoData();
-            modelo.clsProductoVendido ProductoNuevo = new(
-               int.Parse(txtStock.Text),
-               int.Parse(txtIdProducto.Text),
-               int.Parse(txtIdVenta.Text)
-            );
-            if (dbProducto.AgregarProductoVendido(ProductoNuevo))
+            try
             {
-                obtenerDatos();
-                limpiarDatos();
-                txtID.Enabled = true;
-                TareaCompletada("Inserción");
+                modelo.clsProductoVendido ProductoNuevo = new(
+                   int.Parse(txtStock.Text),
+                   int.Parse(txtIdProducto.Text),
+                   int.Parse(txtIdVenta.Text)
+                );
+                if (ProductoVendidoData.AgregarProductoVendido(ProductoNuevo))
+                {
+                    obtenerDatos();
+                    limpiarDatos();
+                    txtID.Enabled = true;
+                    TareaCompletada("Inserción");
+                }
+                else TareaCompletada("Inserción no");
             }
-            else TareaCompletada("Inserción no");
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLimpiarDatos_Click(object sender, EventArgs e)

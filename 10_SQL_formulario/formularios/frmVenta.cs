@@ -24,50 +24,68 @@ namespace _10_SQL_formulario.formularios
         }
         public void obtenerDatos()
         {
-            dataGridView1.DataSource = null;
-            VentaData dbProducto = new VentaData();
-            List<modelo.clsVenta> lstVentas = dbProducto.ListarVentas();
-            dataGridView1.DataSource = lstVentas;
-            dataGridView1.AutoGenerateColumns = true;
+            try
+            {
+                dataGridView1.DataSource = null;
+                List<modelo.clsVenta> lstVentas = VentaData.ListarVentas();
+                dataGridView1.DataSource = lstVentas;
+                dataGridView1.AutoGenerateColumns = true;
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
             btnBuscarVentaXiD.Visible = true;
+            
         }
 
         private void btnBuscarVentaxID_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtID.Text))
+            try
             {
-                MessageBox.Show($"No se permiten valores nulos.", $"Error en el valor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (string.IsNullOrEmpty(txtID.Text))
+                {
+                    MessageBox.Show($"No se permiten valores nulos.", $"Error en el valor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    int id = int.Parse(txtID.Text);
+                    modelo.clsVenta VentaObtenido = VentaData.ObtenerVentaPorId(@id);
+                    txtComentarios.Text = VentaObtenido.Comentarios.ToString();
+                    txtIdUsuario.Text = VentaObtenido.IdUsuario.ToString();
+                }
             }
-            else
+            catch
             {
-                VentaData dbVenta = new VentaData();
-                int id = int.Parse(txtID.Text);
-                modelo.clsVenta VentaObtenido = dbVenta.ObtenerVentaPorId(@id);
-                txtComentarios.Text = VentaObtenido.Comentarios.ToString();
-                txtIdUsuario.Text = VentaObtenido.IdUsuario.ToString();
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void btnBorrarVentaxID_Click(object sender, EventArgs e)
         {
-            DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?", "Confirmación de borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirmacion == DialogResult.Yes)
+            try
             {
-                VentaData dbVenta = new VentaData();
-                int id = int.Parse(txtID.Text);
-
-                if (dbVenta.BorraVentaPorId(@id))
+                DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?", "Confirmación de borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmacion == DialogResult.Yes)
                 {
-                    limpiarDatos();
-                    obtenerDatos();
-                    txtID.Enabled = true;
-                    TareaCompletada("eliminación");
+                    int id = int.Parse(txtID.Text);
+
+                    if (VentaData.BorraVentaPorId(@id))
+                    {
+                        limpiarDatos();
+                        obtenerDatos();
+                        txtID.Enabled = true;
+                        TareaCompletada("eliminación");
+                    }
+                    else TareaCompletada("eliminación no");
                 }
-                else TareaCompletada("eliminación no");
+            }
+            catch {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void limpiarDatos()
@@ -78,23 +96,29 @@ namespace _10_SQL_formulario.formularios
         }
         private void btnActualizaVentaxID_Click(object sender, EventArgs e)
         {
-            DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas Actualizar este registro?", "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirmacion == DialogResult.Yes)
+            try
             {
-                int id = int.Parse(txtID.Text);
-                VentaData dbVenta = new VentaData();
-                modelo.clsVenta VentaActualizar = new(
-                   txtComentarios.Text,
-                   int.Parse(txtIdUsuario.Text)
-                );
-                if (dbVenta.UpdateVentaPorId(@id, VentaActualizar))
+                DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas Actualizar este registro?", "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmacion == DialogResult.Yes)
                 {
-                    obtenerDatos();
-                    limpiarDatos();
-                    TareaCompletada("actualización");
+                    int id = int.Parse(txtID.Text);
+                    modelo.clsVenta VentaActualizar = new(
+                       txtComentarios.Text,
+                       int.Parse(txtIdUsuario.Text)
+                    );
+                    if (VentaData.UpdateVentaPorId(@id, VentaActualizar))
+                    {
+                        obtenerDatos();
+                        limpiarDatos();
+                        TareaCompletada("actualización");
+                    }
+                    else TareaCompletada("actualización no");
                 }
-                else TareaCompletada("actualización no");
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void TareaCompletada(string msm)
@@ -117,20 +141,26 @@ namespace _10_SQL_formulario.formularios
 
         private void btnAgregarVenta_Click(object sender, EventArgs e)
         {
-            VentaData dbVenta = new VentaData();
-            modelo.clsVenta VentaNueva = new(
-               (txtComentarios.Text),
-               int.Parse(txtIdUsuario.Text)
-
-            );
-            if (dbVenta.AgregarVenta(VentaNueva))
+            try
             {
-                obtenerDatos();
-                limpiarDatos();
-                txtID.Enabled = true;
-                TareaCompletada("Inserción");
+                modelo.clsVenta VentaNueva = new(
+                   (txtComentarios.Text),
+                   int.Parse(txtIdUsuario.Text)
+
+                );
+                if (VentaData.AgregarVenta(VentaNueva))
+                {
+                    obtenerDatos();
+                    limpiarDatos();
+                    txtID.Enabled = true;
+                    TareaCompletada("Inserción");
+                }
+                else TareaCompletada("Inserción no");
             }
-            else TareaCompletada("Inserción no");
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLimpiarDatos_Click(object sender, EventArgs e)

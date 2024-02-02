@@ -24,13 +24,19 @@ namespace _10_SQL_formulario.formularios
         }
         public void obtenerDatos()
         {
-            dataGridView1.DataSource = null;
-            ProductoData dbProducto = new ProductoData();
-            List<modelo.clsProducto> lstProductos = dbProducto.ListarProductos();
-            dataGridView1.DataSource = lstProductos;
-            dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.Columns[2].DefaultCellStyle.Format = "N2";
-            dataGridView1.Columns[3].DefaultCellStyle.Format = "N2";
+            try
+            {
+                dataGridView1.DataSource = null;
+                List<modelo.clsProducto> lstProductos = ProductoData.ListarProductos();
+                dataGridView1.DataSource = lstProductos;
+                dataGridView1.AutoGenerateColumns = true;
+                dataGridView1.Columns[2].DefaultCellStyle.Format = "N2";
+                dataGridView1.Columns[3].DefaultCellStyle.Format = "N2";
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -48,38 +54,50 @@ namespace _10_SQL_formulario.formularios
         }
         private void btnBuscarProductoxID_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtID.Text))
+            try
             {
-                MessageBox.Show($"No se permiten valores nulos.", $"Error en el valor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (string.IsNullOrEmpty(txtID.Text))
+                {
+                    MessageBox.Show($"No se permiten valores nulos.", $"Error en el valor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    int id = int.Parse(txtID.Text);
+                    modelo.clsProducto ProductoObtenido = ProductoData.ObtenerProductoPorId(@id);
+                    txtDescripciones.Text = ProductoObtenido.Descripciones.ToString();
+                    txtCosto.Text = ProductoObtenido.Costo.ToString("F2");
+                    txtPrecioVenta.Text = ProductoObtenido.PrecioVenta.ToString("F2");
+                    txtStock.Text = ProductoObtenido.Stock.ToString();
+                    txtIdUsuario.Text = ProductoObtenido.IdUsuario.ToString();
+                }
             }
-            else
+            catch
             {
-                ProductoData dbProducto = new ProductoData();
-                int id = int.Parse(txtID.Text);
-                modelo.clsProducto ProductoObtenido = dbProducto.ObtenerProductoPorId(@id);
-                txtDescripciones.Text = ProductoObtenido.Descripciones.ToString();
-                txtCosto.Text = ProductoObtenido.Costo.ToString("F2");
-                txtPrecioVenta.Text = ProductoObtenido.PrecioVenta.ToString("F2");
-                txtStock.Text = ProductoObtenido.Stock.ToString();
-                txtIdUsuario.Text = ProductoObtenido.IdUsuario.ToString();
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void btnBorrarProductoxID_Click(object sender, EventArgs e)
         {
-            DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?", "Confirmación de borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirmacion == DialogResult.Yes)
+            try
             {
-                ProductoData dbProducto = new ProductoData();
-                int id = int.Parse(txtID.Text);
-
-                if (dbProducto.BorraProductoPorId(@id))
+                DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?", "Confirmación de borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmacion == DialogResult.Yes)
                 {
-                    limpiarDatos();
-                    obtenerDatos();
-                    txtID.Enabled = true;
-                    TareaCompletada("eliminación");
+                    int id = int.Parse(txtID.Text);
+
+                    if (ProductoData.BorraProductoPorId(@id))
+                    {
+                        limpiarDatos();
+                        obtenerDatos();
+                        txtID.Enabled = true;
+                        TareaCompletada("eliminación");
+                    }
+                    else TareaCompletada("eliminación no");
                 }
-                else TareaCompletada("eliminación no");
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void limpiarDatos()
@@ -94,26 +112,32 @@ namespace _10_SQL_formulario.formularios
         }
         private void btnActualizaProductoxID_Click(object sender, EventArgs e)
         {
-            DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas Actualizar este registro?", "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirmacion == DialogResult.Yes)
+            try
             {
-                int id = int.Parse(txtID.Text);
-                ProductoData dbProducto = new ProductoData();
-                modelo.clsProducto ProductoActualizar = new(
-                   txtDescripciones.Text,
-                   decimal.Parse(txtCosto.Text),
-                   decimal.Parse(txtPrecioVenta.Text),
-                   int.Parse(txtStock.Text),
-                   int.Parse(txtIdUsuario.Text)
-                );
-                if (dbProducto.UpdateProductoPorId(@id, ProductoActualizar))
+                DialogResult confirmacion = MessageBox.Show("¿Estás seguro de que deseas Actualizar este registro?", "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmacion == DialogResult.Yes)
                 {
-                    obtenerDatos();
-                    limpiarDatos();
-                    TareaCompletada("actualización");
+                    int id = int.Parse(txtID.Text);
+                    modelo.clsProducto ProductoActualizar = new(
+                       txtDescripciones.Text,
+                       decimal.Parse(txtCosto.Text),
+                       decimal.Parse(txtPrecioVenta.Text),
+                       int.Parse(txtStock.Text),
+                       int.Parse(txtIdUsuario.Text)
+                    );
+                    if (ProductoData.UpdateProductoPorId(@id, ProductoActualizar))
+                    {
+                        obtenerDatos();
+                        limpiarDatos();
+                        TareaCompletada("actualización");
+                    }
+                    else TareaCompletada("actualización no");
                 }
-                else TareaCompletada("actualización no");
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
         }
         private void TareaCompletada(string msm)
@@ -135,37 +159,50 @@ namespace _10_SQL_formulario.formularios
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            limpiarDatos();
-            txtID.Enabled = true;
-            int fila = e.RowIndex;
-            txtID.Text = dataGridView1.Rows[fila].Cells[0].Value.ToString();
-            txtDescripciones.Text = dataGridView1.Rows[fila].Cells[1].Value.ToString();
-            decimal valorCosto = Convert.ToDecimal(dataGridView1.Rows[fila].Cells[2].Value);
-            txtCosto.Text = valorCosto.ToString("N2");
-            decimal valorPreciaVenta = Convert.ToDecimal(dataGridView1.Rows[fila].Cells[3].Value);
-            txtPrecioVenta.Text = valorPreciaVenta.ToString("N2");
-            txtStock.Text = dataGridView1.Rows[fila].Cells[4].Value.ToString();
-            txtIdUsuario.Text = dataGridView1.Rows[fila].Cells[5].Value.ToString();
+            try
+            {
+                limpiarDatos();
+                txtID.Enabled = true;
+                int fila = e.RowIndex;
+                txtID.Text = dataGridView1.Rows[fila].Cells[0].Value.ToString();
+                txtDescripciones.Text = dataGridView1.Rows[fila].Cells[1].Value.ToString();
+                decimal valorCosto = Convert.ToDecimal(dataGridView1.Rows[fila].Cells[2].Value);
+                txtCosto.Text = valorCosto.ToString("N2");
+                decimal valorPreciaVenta = Convert.ToDecimal(dataGridView1.Rows[fila].Cells[3].Value);
+                txtPrecioVenta.Text = valorPreciaVenta.ToString("N2");
+                txtStock.Text = dataGridView1.Rows[fila].Cells[4].Value.ToString();
+                txtIdUsuario.Text = dataGridView1.Rows[fila].Cells[5].Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            ProductoData dbProducto = new ProductoData();
-            modelo.clsProducto ProductoNuevo = new(
-               txtDescripciones.Text,
-               decimal.Parse(txtCosto.Text),
-               decimal.Parse(txtPrecioVenta.Text),
-               int.Parse(txtStock.Text),
-               int.Parse(txtIdUsuario.Text)
-            );
-            if (dbProducto.AgregarProducto(ProductoNuevo))
+            try
             {
-                obtenerDatos();
-                limpiarDatos();
-                txtID.Enabled = true;
-                TareaCompletada("Inserción");
+                modelo.clsProducto ProductoNuevo = new(
+                   txtDescripciones.Text,
+                   decimal.Parse(txtCosto.Text),
+                   decimal.Parse(txtPrecioVenta.Text),
+                   int.Parse(txtStock.Text),
+                   int.Parse(txtIdUsuario.Text)
+                );
+                if (ProductoData.AgregarProducto(ProductoNuevo))
+                {
+                    obtenerDatos();
+                    limpiarDatos();
+                    txtID.Enabled = true;
+                    TareaCompletada("Inserción");
+                }
+                else TareaCompletada("Inserción no");
             }
-            else TareaCompletada("Inserción no");
+            catch
+            {
+                MessageBox.Show("Error en tiempo de ejecución, intente más tarde", "Error de ejecución", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLimpiarDatos_Click(object sender, EventArgs e)
