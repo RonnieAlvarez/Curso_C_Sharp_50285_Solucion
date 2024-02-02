@@ -184,7 +184,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(142, 324);
+            label2.Location = new Point(181, 508);
             label2.Name = "label2";
             label2.Size = new Size(95, 16);
             label2.TabIndex = 1;
@@ -195,7 +195,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(129, 309);
+            label1.Location = new Point(168, 493);
             label1.Name = "label1";
             label1.Size = new Size(108, 16);
             label1.TabIndex = 1;
